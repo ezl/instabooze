@@ -1,0 +1,22 @@
+/* CSS declarations go here */
+
+.add {
+border: 4px solid green;
+background-color: limegreen;
+}
+
+.remove {
+border: 4px solid firebrick;
+background-color: red;
+}
+
+button {
+-moz-border-radius: 50%;
+border-radius: 50%;
+-webkit-border-radius: 50%;
+height: 2em;
+width: 2em;
+color: white;
+font-weight: bold;
+font-size: 1em;
+}

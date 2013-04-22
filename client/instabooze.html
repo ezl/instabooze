@@ -1,0 +1,19 @@
+<head>
+  <title>instabooze</title>
+</head>
+
+<body>
+  {{>cart}}
+</body>
+
+<template name="cart">
+<h2>Products</h2>
+  <ul>
+    {{#each cartItems}}
+      <li>${{item.price}}: {{item.name}}, {{item.description}}<br>
+      <button class="remove">-</button> {{qty}} <button class="add">+</button></li>
+    {{/each}}
+  </ul>
+  <b>Total: {{orderTotal}}</b>
+  <input type="button" value="Checkout"></input>
+</template>
