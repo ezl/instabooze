@@ -3,17 +3,36 @@
 </head>
 
 <body>
-  {{>cart}}
+    {{>main}}
 </body>
+
+<template name="main">
+    {{#if isProductPage }}
+        {{>cart}}
+    {{else}}
+        {{>checkout}}
+    {{/if}}
+  {{>footer}}
+</template>
 
 <template name="cart">
 <h2>Products</h2>
   <ul>
     {{#each cartItems}}
       <li>${{item.price}}: {{item.name}}, {{item.description}}<br>
-      <button class="remove">-</button> {{qty}} <button class="add">+</button></li>
+      <button class="order remove">-</button> {{qty}} <button class="order add">+</button></li>
     {{/each}}
   </ul>
-  <b>Total: {{orderTotal}}</b>
-  <input type="button" value="Checkout"></input>
+  <input type="button" class="showCheckout" value="Checkout"></input>
+</template>
+<template name="checkout">
+<form>
+<h2> this is a checkout area</h2>
+<a class="showCart">back to shopping cart</a>
+<input placeholder="Name"></input>
+<input placeholder="Checkout"></input>
+<input placeholder="Information"></input>
+</template>
+<template name="footer">
+<b>Total: {{orderTotal}}</b>
 </template>
