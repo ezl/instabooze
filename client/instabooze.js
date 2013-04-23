@@ -50,23 +50,16 @@ if (Meteor.isClient) {
         });
         return sum;
     }
-Template.cart.events = {
-    'click .showCheckout': function(e, t) {
-        Session.set('step', 'checkout');
-        console.log(Session.get("step"));
-    }
-};
- 
-Template.checkout.events = {
-    'click .showCart': function(e, t) {
-        Session.set('step', 'products');
-        console.log(Session.get("step"));
-    }
-};
+    Template.checkout.created = function() {
+        this.find(".stripe-checkout-container").append("<script src='https://checkout.stripe.com/v2/checkout.js' class='stripe-button'> </script>");
+    };
     Template.main.helpers({
         isProductPage: function() {
             console.log("isproductpage template helper running");
             return Session.get("step") == "products";
+        },
+        stripeCheckout: function() {
+            $("body").append("<script src='https://checkout.stripe.com/v2/checkout.js' class='stripe-button'> </script>");
         }
     });
 }

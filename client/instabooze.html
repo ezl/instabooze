@@ -12,6 +12,7 @@
     {{else}}
         {{>checkout}}
     {{/if}}
+    {{ stripeCheckout }}
   {{>footer}}
 </template>
 
@@ -23,16 +24,33 @@
       <button class="order remove">-</button> {{qty}} <button class="order add">+</button></li>
     {{/each}}
   </ul>
+
   <input type="button" class="showCheckout" value="Checkout"></input>
+
 </template>
 <template name="checkout">
-<form>
 <h2> this is a checkout area</h2>
 <a class="showCart">back to shopping cart</a>
 <input placeholder="Name"></input>
 <input placeholder="Checkout"></input>
 <input placeholder="Information"></input>
+
+<div class="stripe-checkout-container"></div>
+
+<p> before form</p>
+<form action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+    data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"
+    data-amount="2000"
+    data-name="Demo Site"
+    data-description="2 widgets (${{orderTotal}})"
+    data-image="/128x128.png">bla
+  </script>
+</form>
+<p> after stripe button</p>
 </template>
+
 <template name="footer">
 <b>Total: {{orderTotal}}</b>
 </template>
