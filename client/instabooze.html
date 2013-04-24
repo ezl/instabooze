@@ -6,7 +6,6 @@
 </head>
 
 <body>
-    <header>You are viewing the <strong>{{currentPage}}</strong> page now.</header>
     {{renderPage}}
 </body>
 
@@ -15,7 +14,7 @@
     <div id="background-image"></div>
         <h1 class="title"><span class="red">insta</span><span >booze</span></h1>
         <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
-        <a class="button" href="{{cartPath}}">Start shopping</a>
+        <span><a class="button" href="{{cartPath}}">Get Some Alcohol Delivered Now!</a></span>
     </div>
 </div>
 </template>
@@ -37,7 +36,7 @@
 </template>
 
 <template name="cart">
-<h2>Products</h2>
+<h2>What Do You Want To Drink?</h2>
   <ul>
     {{#each cartItems}}
       <li>${{item.price}}: {{item.name}}, {{item.description}}<br>
@@ -50,16 +49,23 @@
 </template>
 
 <template name="checkout">
-<h2> this is a checkout area</h2>
-<a class="button" href="{{cartPath}}">&lt; back to shopping cart</a>
+<a class="button" href="{{cartPath}}">&lt; Back To Shopping Cart</a>
+<input type="checkbox"> Yes, I'm 21 or older.
+<input type="checkbox"> Yes, The order is in <a href="">Instabooze's delivery range</a>
+<br>
+<br>
+<h2>Where Should We Bring Your Order?</h2>
 <input placeholder="Name"></input>
-<input placeholder="Checkout"></input>
-<input placeholder="Information"></input>
+<input placeholder="Address"></input>
+<input placeholder="Email"></input>
+<input placeholder="Cell Phone Number"></input>
 
 {{>footer}}
 {{>stripe}}
 </template>
 
 <template name="footer">
+<div>
 <b>Total: {{orderTotal}}</b>
+</div>
 </template>
