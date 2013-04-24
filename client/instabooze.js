@@ -33,23 +33,26 @@ if (Meteor.isClient) {
         '/checkout': 'checkout',
     });
 
-
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
     };
+
     Template.cart.events({
          'click .order.add' : function () {
             updateCart(this.item._id, 1);
         }
     });
+
     Template.cart.events({
         'click .order.remove' : function () {
             updateCart(this.item._id, -1);
         }
     });
+
     Template.cart.cartItems = function() {
         return _.values(Session.get("cart"));
     };
+
     Template.footer.orderTotal = function() {
         sum = 0;
         _.each(Session.get("cart"), function(cartItem) {
@@ -57,6 +60,7 @@ if (Meteor.isClient) {
         });
         return sum;
     }
+
     Template.checkout.rendered = function() {
         // Check this out.  This fuck is crazy.  If I left line 56 it works, but line 55 breaks, notic
         // it does the same thing, basically this.find... you go

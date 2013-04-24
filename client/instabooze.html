@@ -41,6 +41,7 @@
   </ul>
 
   <a class="button" href="{{checkoutPath}}">Check Out</a>
+  {{>footer}}
 </template>
 
 <template name="checkout">
@@ -51,7 +52,9 @@
 <input placeholder="Information"></input>
 
 <p> before form</p>
+{{>stripe}}
 <p> after stripe button</p>
+{{>footer}}
 </template>
 
 <template name="footer">
