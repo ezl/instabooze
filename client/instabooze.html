@@ -19,10 +19,15 @@
 </div>
 </template>
 
+<template name="thankyou">
+<div>
+    <p>Thank you</p>
+</div>
+</template>
+
 <template name="stripe">
 <div class="stripe-checkout-container">
 
-<form action="" method="POST">
   <script
     src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
     data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"
@@ -31,7 +36,6 @@
     data-description="{{stripeDescription}}"
     data-image="/marketplace.png">
   </script>
-</form>
 </div>
 </template>
 
@@ -55,17 +59,19 @@
 <br>
 <br>
 <h2>Where Should We Bring Your Order?</h2>
-<input placeholder="Name"></input>
-<input placeholder="Address"></input>
-<input placeholder="Email"></input>
-<input placeholder="Cell Phone Number"></input>
+<form action="" method="POST">
+<input placeholder="Name" name="name"></input>
+<input placeholder="Address" name="address"></input>
+<input placeholder="Email" name="email"></input>
+<input placeholder="Cell Phone Number" name="cell"></input>
 
 {{>footer}}
 {{>stripe}}
+</form>
 </template>
 
 <template name="footer">
 <div>
-<b>Total: {{orderTotal}}</b>
+<b>Total: ${{orderTotal}}</b>
 </div>
 </template>

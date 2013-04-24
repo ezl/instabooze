@@ -1,4 +1,5 @@
 Products = new Meteor.Collection("products");
+Orders = new Meteor.Collection("orders");
 
 Meteor.startup(function() {
     cart = {}
@@ -31,7 +32,9 @@ if (Meteor.isClient) {
         '/': 'landing',
         '/cart': 'cart',
         '/checkout': 'checkout',
+        '/thankyou': 'thankyou',
     });
+
 
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
