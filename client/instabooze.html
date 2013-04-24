@@ -1,5 +1,8 @@
 <head>
   <title>instabooze</title>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 </head>
 
 <body>
@@ -12,7 +15,6 @@
     {{else}}
         {{>checkout}}
     {{/if}}
-    {{ stripeCheckout }}
   {{>footer}}
 </template>
 
@@ -35,19 +37,20 @@
 <input placeholder="Checkout"></input>
 <input placeholder="Information"></input>
 
-<div class="stripe-checkout-container"></div>
-
 <p> before form</p>
+<div class="stripe-checkout-container">
+
 <form action="" method="POST">
   <script
     src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
     data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"
     data-amount="2000"
     data-name="Demo Site"
-    data-description="2 widgets (${{orderTotal}})"
-    data-image="/128x128.png">bla
+    data-description="2 widgets ($20.00)"
+    data-image="/128x128.png">
   </script>
 </form>
+</div>
 <p> after stripe button</p>
 </template>
 
