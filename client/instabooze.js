@@ -50,10 +50,24 @@ if (Meteor.isClient) {
     });
 
     Template.cart.cartItems = function() {
+        return getCartItems();
+    };
+
+    Template.stripe.stripeDescription = function() {
+        var amount = (Math.round(getCartTotal()*100) / 100).toString();
+        var items = getCartItems().length;
+        return items + " Items ($" + amount + ")";
+    };
+
+    Template.stripe.stripeAmount = function() {
+        return Math.round(getCartTotal() * 100).toString();
+    };
+
+    var getCartItems = function() {
         return _.values(Session.get("cart"));
     };
 
-    Template.footer.orderTotal = function() {
+    var getCartTotal = function() {
         sum = 0;
         _.each(Session.get("cart"), function(cartItem) {
             sum += cartItem.item.price * cartItem.qty;
@@ -61,18 +75,20 @@ if (Meteor.isClient) {
         return sum;
     }
 
+    Template.footer.orderTotal = function() {
+        return getCartTotal();
+    }
+
     Template.checkout.rendered = function() {
         stripeSnippet = [
-        '<form action="" method="POST">',
         '  <script',
         '    src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"',
-        '    data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"',
-        '    data-amount="2000"',
-        '    data-name="Demo Site"',
-        '    data-description="2 widgets ($20.00)"',
-        '    data-image="/128x128.png">',
+        //'    data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"',
+        //'    data-amount="2000"',
+        //'    data-name="Demo Site"',
+        //'    data-description="2 widgets ($20.00)"',
+        //'    data-image="/128x128.png">',
         '  </script>',
-        '</form>',
         ].join("");
         $("body").append(stripeSnippet);
     };
