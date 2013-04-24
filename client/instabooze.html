@@ -11,8 +11,13 @@
 </body>
 
 <template name="landing">
-<h1>This is a landing page</h1>
-<a href="{{cartPath}}">Start shopping</a>
+<div id="landingPage">
+    <div id="background-image"></div>
+        <h1 class="title"><span class="red">insta</span><span >booze</span></h1>
+        <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
+        <a class="button" href="{{cartPath}}">Start shopping</a>
+    </div>
+</div>
 </template>
 
 <template name="stripe">
@@ -40,21 +45,19 @@
     {{/each}}
   </ul>
 
-  <a class="button" href="{{checkoutPath}}">Check Out</a>
   {{>footer}}
+  <a class="button" href="{{checkoutPath}}">Check Out</a>
 </template>
 
 <template name="checkout">
 <h2> this is a checkout area</h2>
-<a class="showCart" class="button" href="{{cartPath}}">back to shopping cart</a>
+<a class="button" href="{{cartPath}}">&lt; back to shopping cart</a>
 <input placeholder="Name"></input>
 <input placeholder="Checkout"></input>
 <input placeholder="Information"></input>
 
-<p> before form</p>
-{{>stripe}}
-<p> after stripe button</p>
 {{>footer}}
+{{>stripe}}
 </template>
 
 <template name="footer">
