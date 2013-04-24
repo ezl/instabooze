@@ -11,7 +11,6 @@ Meteor.startup(function() {
         });
         Session.set('cart', cart);
     });
-    Session.set("step", "products");
 });
 
 var updateCart = function(itemID, delta) {
@@ -66,27 +65,18 @@ if (Meteor.isClient) {
         //var foo = this.find(".stripe-checkout-container");
         //console.log(foo);
         //console.log("hi. this is a console.log. no errors.");
-stripeSnippet = [
-'<form action="" method="POST">',
-'  <script',
-'    src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"',
-'    data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"',
-'    data-amount="2000"',
-'    data-name="Demo Site"',
-'    data-description="2 widgets ($20.00)"',
-'    data-image="/128x128.png">',
-'  </script>',
-'</form>',
-].join("");
+        stripeSnippet = [
+        '<form action="" method="POST">',
+        '  <script',
+        '    src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"',
+        '    data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"',
+        '    data-amount="2000"',
+        '    data-name="Demo Site"',
+        '    data-description="2 widgets ($20.00)"',
+        '    data-image="/128x128.png">',
+        '  </script>',
+        '</form>',
+        ].join("");
         $("body").append(stripeSnippet);
     };
-    Template.main.helpers({
-        isProductPage: function() {
-            console.log("isproductpage template helper running");
-            return Session.get("step") == "products";
-        },
-        // stripeCheckout: function() {
-        //     $("body").append("<script src='https://checkout.stripe.com/v2/checkout.js' class='stripe-button'> </script>");
-        // }
-    });
 }
