@@ -27,6 +27,14 @@ var updateCart = function(itemID, delta) {
 };
 
 if (Meteor.isClient) {
+
+    Meteor.Router.add({
+        '/': 'landing',
+        '/cart': 'cart',
+        '/checkout': 'checkout',
+    });
+
+
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
     };

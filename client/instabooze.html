@@ -6,8 +6,14 @@
 </head>
 
 <body>
-    {{>main}}
+    <header>You are viewing the <strong>{{currentPage}}</strong> page now.</header>
+    {{renderPage}}
 </body>
+
+<template name="landing">
+<h1>This is a landing page</h1>
+<a href="{{cartPath}}">Start shopping</a>
+</template>
 
 <template name="main">
     {{#if isProductPage }}
@@ -40,12 +46,13 @@
     {{/each}}
   </ul>
 
-  <input type="button" class="showCheckout" value="Checkout"></input>
+
+  <a class="button" href="{{checkoutPath}}">Check Out</a>
 
 </template>
 <template name="checkout">
 <h2> this is a checkout area</h2>
-<a class="showCart">back to shopping cart</a>
+<a class="showCart" class="button" href="{{cartPath}}">back to shopping cart</a>
 <input placeholder="Name"></input>
 <input placeholder="Checkout"></input>
 <input placeholder="Information"></input>
