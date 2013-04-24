@@ -22,6 +22,7 @@
 <template name="thankyou">
 <div>
     <p>Thank you</p>
+    <p>Share that shit on facebook for a discount the next time.</p>
 </div>
 </template>
 
@@ -64,7 +65,15 @@
 <input placeholder="Address" name="address"></input>
 <input placeholder="Email" name="email"></input>
 <input placeholder="Cell Phone Number" name="cell"></input>
-
+<input type="hidden" name="cart" value=""></input>
+<div style="display:non;">
+Here's the stuff you ordered:
+<ul>
+{{#each cartItems}}
+<li>{{qty}}: {{item.description}}</li>
+{{/each}}
+</ul>
+</div>
 {{>footer}}
 {{>stripe}}
 </form>

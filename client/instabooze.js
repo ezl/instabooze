@@ -56,14 +56,22 @@ if (Meteor.isClient) {
         return getCartItems();
     };
 
+    Template.checkout.cartItems = function() {
+        return getCartItems();
+    };
+
+    var getDeliveryAmount = function() {
+        var deliveryAmount = 5;
+        return deliveryAmount;
+        };
     Template.stripe.stripeDescription = function() {
-        var amount = (Math.round(getCartTotal()*100) / 100).toString();
+        var amount = (Math.round(getDeliveryAmount() + getCartTotal()) * 100 / 100).toString();
         var items = getCartItems().length;
         return items + " Items ($" + amount + ")";
     };
 
     Template.stripe.stripeAmount = function() {
-        return Math.round(getCartTotal() * 100).toString();
+        return Math.round((getDeliveryAmount() + getCartTotal()) * 100).toString();
     };
 
     var getCartItems = function() {
@@ -72,6 +80,7 @@ if (Meteor.isClient) {
 
     var getCartTotal = function() {
         sum = 0;
+        sum += getDeliveryAmount();
         _.each(Session.get("cart"), function(cartItem) {
             sum += cartItem.item.price * cartItem.qty;
         });

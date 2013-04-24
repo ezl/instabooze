@@ -1,11 +1,12 @@
 
 Meteor.Router.add('/checkout', 'POST', function() {
-    // console.log(Session);
-    console.log("POST REQUEST", this.params, this.request.body);
-    // I want to either 1) redirect to a template "post payment";
-    // 2) redirect to checkout page, but it doesn't work...
-    // returning a string will make that string the response, not
-    // the template, gotta figure this.
+    var post = this.request.body;
+    console.log(post.cart);
+    var cart = JSON.parse(post.cart);
+    console.log(cart, cart[0], cart[0].id);
+
+    console.log("POST REQUEST:", post);
+    console.log(post.name);
     return [302, {"Location": "/thankyou"}, "/thankyou"];
 });
 
