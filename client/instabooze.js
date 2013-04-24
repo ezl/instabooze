@@ -62,13 +62,6 @@ if (Meteor.isClient) {
     }
 
     Template.checkout.rendered = function() {
-        // Check this out.  This fuck is crazy.  If I left line 56 it works, but line 55 breaks, notic
-        // it does the same thing, basically this.find... you go
-        // console.log(this.find(".stripe-checkout-container"));
-        // this.find("body");
-        //var foo = this.find(".stripe-checkout-container");
-        //console.log(foo);
-        //console.log("hi. this is a console.log. no errors.");
         stripeSnippet = [
         '<form action="" method="POST">',
         '  <script',
