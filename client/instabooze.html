@@ -55,22 +55,25 @@
 
 <template name="checkout">
 <a class="button" href="{{cartPath}}">&lt; Back To Shopping Cart</a>
-<input type="checkbox"> Yes, I'm 21 or older.
-<input type="checkbox"> Yes, The order is in <a href="">Instabooze's delivery range</a>
+<form action="" method="POST">
+
+<input id="21" name="21" type="checkbox">
+<label for="21">Yes, I'm 21 or older.</label>
+<input type="checkbox" id="deliveryRange" name="deliveryRange">
+<label for="deliveryRange">Yes, The order is in<a href="">Instabooze's delivery range</a></label>
 <br>
 <br>
 <h2>Where Should We Bring Your Order?</h2>
-<form action="" method="POST">
 <input placeholder="Name" name="name"></input>
 <input placeholder="Address" name="address"></input>
 <input placeholder="Email" name="email"></input>
 <input placeholder="Cell Phone Number" name="cell"></input>
-<input type="hidden" name="cart" value=""></input>
-<div style="display:non;">
+<input type="hidden" name="cart" value="{{cart_repr}}"></input>
+<div style="display:none;">
 Here's the stuff you ordered:
 <ul>
 {{#each cartItems}}
-<li>{{qty}}: {{item.description}}</li>
+<li>{{qty}}: {{item.description}} -- {{item._id}}</li>
 {{/each}}
 </ul>
 </div>
