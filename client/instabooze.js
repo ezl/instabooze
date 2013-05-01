@@ -45,8 +45,8 @@ if (Meteor.isClient) {
             for (var i=0;i<item.qty;i++) {
                 itemlist.push(item.item.name);
             };
-            console.log(itemlist)
         });
+        return itemlist;
     };
 
     Template.cart.events({
