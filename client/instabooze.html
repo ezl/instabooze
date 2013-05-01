@@ -46,8 +46,6 @@
     <div class="container">
         <div class="cart">
     
-    <h2>What can I get for you?</h2>
-    
     <ul>
        {{#each cartItems}}
            <li class="product">
@@ -56,7 +54,7 @@
                     <h6 class="price">${{item.price}}</h6>
                 </div>
                <div class="image-quantity">
-                   <div class="product-image"><img src="http://placehold.it/100x90"></div>
+                   <div class="product-image"><img src="{{item.image}}"></div>
                    <div class="set-quantity">
                         <a href="#" class="order remove"><i class="ss-icon ss-symbolicons-block ss-hyphen"></i></a>
                             <span class="qty">{{qty}}</span> 
@@ -125,8 +123,8 @@ Tax: ${{taxCost}}<br/>
 
     <div class="total group">
         <p>Total: ${{orderTotal}}</p>
-        <div class="bottles">
-            {{#each cartItems}} X<i class="ss-icon ss-symbolicons-block ss-bottle"></i> {{/each}}
+        <div class="bottles group">
+            {{#each cartItems}} <i class="ss-icon ss-symbolicons-block ss-bottle"></i> {{/each}}
         </div>
     </div>
     

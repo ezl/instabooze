@@ -39,11 +39,16 @@ if (Meteor.isClient) {
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
     };
-
-    Template.footer.cartItems = function () {
-        return _.values(Session.get("cart"));
+    Template.footer.cartItems = function() {
+        itemlist=[];
+        _.each(Session.get("cart"), function(item) {
+            for (var i=0;i<item.qty;i++) {
+                itemlist.push(item.item.name);
+            };
+        });
+        return itemlist;
     };
-    
+
     Template.cart.events({
          'click .order.add' : function (e) {
             e.preventDefault();
