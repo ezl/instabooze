@@ -1,15 +1,15 @@
 #footer {
-    background: #27ae60;
+    background: #000;
     bottom: 0;
     padding: 5px 10px 10px;
 }
 
 #footer .total { margin-bottom: 10px; }
 
-#footer .total p { color: #fff; margin-top: 10px; font-size: 1.25em; float: left; }
+#footer .total p { color: limegreen; margin-top: 10px; font-size: 1.25em; float: left; }
 
-#footer .button { clear: both; background: darkgreen; display: block; padding: 10px 0; color: #fff; text-decoration: none; -webkit-border-radius: 3px; text-align: center; -moz-border-radius: 3px; border-radius: 3px; }
+#footer .button { clear: both; background: limegreen; display: block; padding: 10px 0; color: #fff; text-shadow: 1px 1px 1px forestgreen; text-decoration: none; -webkit-border-radius: 3px; text-align: center; -moz-border-radius: 3px; border-radius: 3px; }
 
 .bottles { float: left; margin: 13px 0 0 15px; }
 
-.bottles i { color: #fff; }
+.bottles i { color: #fff; font-size: 1.1em; }
