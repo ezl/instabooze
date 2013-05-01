@@ -41,18 +41,14 @@ if (Meteor.isClient) {
     };
     Template.footer.cartItems = function() {
         itemlist=[];
-        _.each(Session.get("cart"),function(product) {
-            for (var i=0;i<product.qty;i++) {
-                itemlist.push(product.name);
+        _.each(Session.get("cart"), function(item) {
+            for (var i=0;i<item.qty;i++) {
+                itemlist.push(item.item.name);
             };
             console.log(itemlist)
         });
     };
 
-    Template.footer.cartItems = function () {
-        return _.values(Session.get("cart"));
-    };
-    
     Template.cart.events({
          'click .order.add' : function (e) {
             e.preventDefault();
