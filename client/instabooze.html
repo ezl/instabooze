@@ -46,8 +46,6 @@
     <div class="container">
         <div class="cart">
     
-    <h2>What can I get for you?</h2>
-    
     <ul>
        {{#each cartItems}}
            <li class="product">
@@ -125,8 +123,8 @@ Tax: ${{taxCost}}<br/>
 
     <div class="total group">
         <p>Total: ${{orderTotal}}</p>
-        <div class="bottles">
-            {{#each cartItems}} X<i class="ss-icon ss-symbolicons-block ss-bottle"></i> {{/each}}
+        <div class="bottles group">
+            {{#each cartItems}} <i class="ss-icon ss-symbolicons-block ss-bottle"></i> {{/each}}
         </div>
     </div>
     
