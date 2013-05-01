@@ -1,0 +1,48 @@
+
+
+body { background: #eee; font-family: Helvetica Neue, Helvetica, Arial, Sans-serif; }
+
+/* Remove Click Outline on iOS */
+
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+.cart h2 {display: none; }
+
+.cart ul { border: 1px solid #ccc; margin: 20px 0; }
+
+.cart .product { background: #fff; padding: 20px; text-align: center; border-bottom: 1px solid #ccc; }
+
+.product .price-name { display: block; width: 100%; }
+
+.product .price-name h6 { font-size: 1.25em; font-weight: bold; }
+
+.product .price-name h6.price { float: right; color: green; }
+
+.product .price-name h6.name { float: left;  }
+
+.cart .product:last-child { border-bottom: none; } 
+
+.product .image-quantity { padding: 5px 0 ; display: inline-block; }
+
+.image-quantity .product-image { margin-right: 20px; }
+
+.product .product-image, .product .set-quantity { float: left; }
+
+.product .set-quantity { margin-top: 12px; }
+
+.product .set-quantity span { display: inline-block; padding: 0 10px; font-size: 1.5em; line-height: 2em; float: left;  margin-top: 10px; }
+
+.product .product-details { clear: both; text-align: center; margin-top: 10px; }
+
+.order i { display: inline-block; line-height: 2em; font-size: 2em; margin-top: 5px; float: left; }
+
+.order:hover { cursor: pointer; }
+
+.order.remove { color: red; }
+
+.order.add { color: green; }
+
+.product .price-name { display: inline-block;  margin-bottom: 10px; }
+
+
+.product .product-details p { margin-top: 5px; }

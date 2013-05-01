@@ -40,14 +40,20 @@ if (Meteor.isClient) {
         return _.values(Session.get("cart"));
     };
 
+    Template.footer.cartItems = function () {
+        return _.values(Session.get("cart"));
+    };
+    
     Template.cart.events({
-         'click .order.add' : function () {
+         'click .order.add' : function (e) {
+            e.preventDefault();
             updateCart(this.item._id, 1);
         }
     });
 
     Template.cart.events({
-        'click .order.remove' : function () {
+        'click .order.remove' : function (e) {
+            e.preventDefault();
             updateCart(this.item._id, -1);
         }
     });

@@ -1,0 +1,12 @@
+#footer {
+    bottom: 0;
+    padding: 5px 10px 10px;
+}
+
+#footer .total { margin-bottom: 10px; }
+
+#footer .total p { color: limegreen; margin-top: 10px; font-size: 1.25em; float: left; }
+
+#footer .button { clear: both; background: limegreen; display: block; padding: 10px 0; color: #fff; text-shadow: 1px 1px 1px forestgreen; text-decoration: none; -webkit-border-radius: 3px; text-align: center; -moz-border-radius: 3px; border-radius: 3px; }
+
+.bottles li { color: #fff; }

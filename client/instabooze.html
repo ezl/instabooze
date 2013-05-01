@@ -3,20 +3,19 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 </head>
 
 <body>
-    {{renderPage}}
+        {{renderPage}}
 </body>
 
 <template name="landing">
-<div id="landingPage">
-    <div id="background-image"></div>
-        <h1 class="title"><span class="red">insta</span><span >booze</span></h1>
-        <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
-        <span><a class="button" href="{{cartPath}}">Get Some Alcohol Delivered Now!</a></span>
-    </div>
+
+<div class="outer-wrapper">
+
 </div>
+
 </template>
 
 <template name="thankyou">
@@ -41,19 +40,46 @@
 </template>
 
 <template name="cart">
-<h2>What Do You Want To Drink?</h2>
-  <ul>
-    {{#each cartItems}}
-      <li>${{item.price}}: {{item.name}}, {{item.description}}<br>
-      <button class="order remove">-</button> {{qty}} <button class="order add">+</button></li>
-    {{/each}}
-  </ul>
 
-  {{>footer}}
-  <a class="button" href="{{checkoutPath}}">Check Out</a>
+    {{> header}}
+    
+    <div class="container">
+        <div class="cart">
+    
+    <h2>What can I get for you?</h2>
+    
+    <ul>
+       {{#each cartItems}}
+           <li class="product">
+                 <div class="price-name">
+                    <h6 class="name">{{item.name}}</h6>
+                    <h6 class="price">${{item.price}}</h6>
+                </div>
+               <div class="image-quantity">
+                   <div class="product-image"><img src="http://placehold.it/100x90"></div>
+                   <div class="set-quantity">
+                        <a href="#" class="order remove"><i class="ss-icon ss-symbolicons-block ss-hyphen"></i></a>
+                            <span class="qty">{{qty}}</span> 
+                        <a href="#" class="order add"><i class="ss-icon ss-symbolicons-block ss-plus"></i></a>
+                   </div>    
+               </div>
+               <div class="product-details">
+                <p class="description">{{item.description}}</p>
+               </div>
+           </li>
+           </li>
+        {{/each}}
+      </ul>
+    
+      {{>footer}}
+
+</div> <!-- end .cart -->
+    </div>
+    
 </template>
 
 <template name="checkout">
+    {{> header}}
 <a class="button" href="{{cartPath}}">&lt; Back To Shopping Cart</a>
 <form action="" method="POST">
 
@@ -85,8 +111,27 @@ Tax: ${{taxCost}}<br/>
 </form>
 </template>
 
+<template name="header">
+    
+    <header id="header" class="fixed-bar">
+        <h1><a href="#">Instabooze</a></h1>
+    </header>
+    
+</template>
+
 <template name="footer">
-<div>
-<b>Total: ${{orderTotal}}</b>
-</div>
+
+<footer id="footer" class="fixed-bar">
+
+    <div class="total group">
+        <p>Total: ${{orderTotal}}</p>
+        <div class="bottles">
+            {{#each cartItems}} X<i class="ss-icon ss-symbolicons-block ss-bottle"></i> {{/each}}
+        </div>
+    </div>
+    
+    <a class="button" href="{{checkoutPath}}">Booze Me!</a>
+
+</footer>
+
 </template>

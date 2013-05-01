@@ -1,4 +1,3 @@
-
 Meteor.Router.add('/checkout', 'POST', function() {
     var post = this.request.body;
     console.log("POST REQUEST:", post);
