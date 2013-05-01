@@ -48,6 +48,7 @@ Meteor.startup(function () {
                 price       : data[i].price,
                 description : data[i].description,
                 order       : data[i].order,
+                image       : data[i].image,
             });
         }
     }

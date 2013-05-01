@@ -39,6 +39,15 @@ if (Meteor.isClient) {
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
     };
+    Template.footer.cartItems = function() {
+        itemlist=[];
+        _.each(Session.get("cart"),function(product) {
+            for (var i=0;i<product.qty;i++) {
+                itemlist.push(product.name);
+            };
+            console.log(itemlist)
+        });
+    };
 
     Template.footer.cartItems = function () {
         return _.values(Session.get("cart"));
