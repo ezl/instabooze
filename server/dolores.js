@@ -5,18 +5,31 @@ Meteor.Router.add('/checkout', 'POST', function() {
     var cart = JSON.parse(post.cart);
     var cartTotal = 0;
     var orderText = "";
+
+    //
+    // Make sure the total value is correctly calculated.  Avoid possible
+    // hacks on the frontend affect the value we charge the user.
+    //
+    var total_qty = 0;
     _.each(_.keys(cart), function(id) {
-        product = Products.findOne({_id: id });
+        product = Products.findOne({_id: id});
         // console.log(product, product.name, product.price);
         qty = cart[id];
+        total_qty += cart[id];
         // console.log(qty);
         orderText += qty + '\t' + product.price + '\t' + product.name + '\n';
         cartTotal += qty * product.price;
     });
     var deliveryAmount = 5; // getDeliveryAmount() can't be found;
+    if (total_qty > 3)
+        deliveryAmount = 10;
+    var tax = 10.25 / 100;
+
     cartTotal += deliveryAmount;
+    cartTotal *= 1 + tax;
+
     orderText += cartTotal + " Total";
-    var stripeChargeAmount = Math.round(cartTotal * 100);
+    var stripeChargeAmount = parseInt(cartTotal * 100);
     console.log(orderText);
     console.log(stripeChargeAmount);
     var deliveryInformation = [
@@ -27,6 +40,13 @@ Meteor.Router.add('/checkout', 'POST', function() {
         'Cell Phone    : ' + post.cell,
         'Delivery Info : ' + '',
     ].join('\n');
+    process.env.MAIL_URL = "smtp://localhost/";
+    Email.send({
+        to: "chromano@gmail.com",
+        from: "instabooze@instabooze.net",
+        subject: "Your order",
+        text: deliveryInformation
+    });
     console.log(deliveryInformation);
 
     return [302, {"Location": "/thankyou"}, "/thankyou"];

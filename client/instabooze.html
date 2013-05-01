@@ -77,7 +77,10 @@ Here's the stuff you ordered:
 {{/each}}
 </ul>
 </div>
-{{>footer}}
+Subtotal: ${{subtotal}}<br/>
+Delivery: ${{deliveryCost}}<br/>
+Tax: ${{taxCost}}<br/>
+<b>Total: ${{orderTotal}}</b><br/>
 {{>stripe}}
 </form>
 </template>

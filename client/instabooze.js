@@ -1,11 +1,6 @@
 Products = new Meteor.Collection("products");
 Orders = new Meteor.Collection("orders");
 
-getDeliveryAmount = function() {
-    var deliveryAmount = 5;
-    return deliveryAmount;
-};
-
 Meteor.startup(function() {
     cart = {}
     Meteor.subscribe('products', function () {
@@ -65,6 +60,30 @@ if (Meteor.isClient) {
         return getCartItems();
     };
 
+    Template.checkout.subtotal = function() {
+        return getCartTotal();
+    };
+
+    Template.checkout.deliveryCost = function() {
+        var qty = 0;
+        _.each(Session.get("cart"), function(item) {
+            qty += item.qty;
+        });
+        if (qty == 0)
+            return 0.0;
+        if (qty > 3)
+            return 10.0;
+        return 5.0;
+    };
+
+    Template.checkout.taxCost = function() {
+        return (Template.checkout.subtotal() + Template.checkout.deliveryCost()) * 0.1025;
+    };
+
+    Template.checkout.orderTotal = function() {
+        return Template.checkout.subtotal() + Template.checkout.deliveryCost() + Template.checkout.taxCost();
+    };
+
     Template.stripe.stripeDescription = function() {
         var amount = (Math.round(getCartTotal()) * 100 / 100).toString();
         var items = getCartItems().length;
@@ -81,7 +100,6 @@ if (Meteor.isClient) {
 
     var getCartTotal = function() {
         sum = 0;
-        sum += getDeliveryAmount();
         _.each(Session.get("cart"), function(cartItem) {
             sum += cartItem.item.price * cartItem.qty;
         });
