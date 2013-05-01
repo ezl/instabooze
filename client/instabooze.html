@@ -12,8 +12,11 @@
 
 <template name="landing">
 
-<div class="outer-wrapper">
-
+<div class="outer-wrapper" id="header">
+    <div id="background-image"></div>
+    {{>title}}
+    <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
+    <span><a class="button" href="{{cartPath}}">Get Some Alcohol Delivered Now!</a></span>
 </div>
 
 </template>
@@ -109,10 +112,14 @@ Tax: ${{taxCost}}<br/>
 </form>
 </template>
 
+<template name="title">
+    <h1 class="title"><a href="#">insta<span class="red">booze</span></a></h1>
+</template>
+
 <template name="header">
     
     <header id="header" class="fixed-bar">
-        <h1><a href="#">insta<span class="red">booze</span></a></h1>
+        {{>title}}
     </header>
     
 </template>
