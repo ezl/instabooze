@@ -69,7 +69,7 @@ if (Meteor.isClient) {
             StripeCheckout.open({
                 key:         'pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8',
                 // address:     true,
-                amount:      5000,
+                amount:      Math.round(getOrderTotal() * 100),
                 name:        'InstaBooze',
                 description: getStripeDescription(),
                 panelLabel:  'Pay',
@@ -141,14 +141,14 @@ if (Meteor.isClient) {
     Template.checkout.orderTotal = getOrderTotal;
 
     var getStripeDescription = function() {
-        var amount = getCartTotal().toString();
+        var amount = getOrderTotal().toString();
         var items = getNumItemsInCart();
         return items + " Items ($" + amount + ")";
     };
     Template.stripe.stripeDescription = getStripeDescription;
 
     Template.stripe.stripeAmount = function() {
-        return getOrderTotal();
+        return Math.round(getOrderTotal() * 100);
     };
 
     var getCartItems = function() {
