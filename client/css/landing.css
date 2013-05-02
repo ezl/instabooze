@@ -10,18 +10,26 @@
     color: white;
     text-shadow: 1px 1px rgba(0, 0, 0, .9);
 }
-#landing h1 {
-    font-size: 2em;
-    padding-bottom: 1.4em;
+
+
+
+.ib-brand a { 
+    color: #fff;
+    text-shadow: 1px 1px 0px #000;
+    text-decoration: none;
+    font-family: 'museo500';
+    font-size: 1em;   
 }
+
 #landing h2 {
     font-size: 1.4em;
     line-height: 1.4em;
-    padding-bottom: 2.2em;
+    padding: 2.2em 0;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, .9);
 }
 
-#landing a.greenbutton { margin-bottom:25%; }
+#landing a.greenbutton { margin-bottom:25%; white-space: normal; }
+
 .outer-wrapper {
     z-index: 1;
     position: relative;
@@ -37,4 +45,31 @@
     vertical-align: middle;
     padding: 10%;
 }
+
+@media screen and (min-width: 320px) {
+    
+    #landing {
+        background-size: cover;
+    }
+    
+    
+    #landing .ib-brand a {
+        font-size: 2em;
+    }
+    
+    .inner {
+        
+        padding: 5%;
+    }
+    
+}
+
+@media screen and (min-width: 480px) {
+    
+    #landing .ib-brand a {
+        font-size: 2.5em;
+    }
+    
+}
+
 
