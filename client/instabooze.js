@@ -57,6 +57,26 @@ if (Meteor.isClient) {
     });
 
     Template.checkout.events({
+        'click #verify-age': function(e, t) {
+            e.preventDefault();
+            
+            var $this = $(e.target);
+            
+            $this.parent().slideUp();
+            
+            $(".loc-check").slideDown();
+              
+        },
+        'click #verify-loc': function(e, t) {
+            e.preventDefault();
+            
+            var $this = $(e.target);
+            
+            $this.parent().slideUp();
+            
+            $("#order-form").slideDown();
+
+        },
         'click .stripeButton' : function(){
             var stripeLibraries = $('<script src="https://checkout.stripe.com/v2/checkout.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>');
             $("body").append(stripeLibraries);

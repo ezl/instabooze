@@ -1,3 +1,4 @@
+/*
 input[type='text'] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -66,3 +67,74 @@ input[type="checkbox"] {
 #checkout form {
     padding-top: 25px;
 }
+
+*/
+
+#checkout {}
+
+.checker { display: none; }
+
+.checker.active { display: block; }
+
+.checker p { margin-bottom: 20px; background: #fdeb98; padding: 10px; border: 1px solid #d7b44e; color: #483a14; font-size: 1em; line-height: 1.5em; }
+
+.checker .greenbutton { margin-bottom: 20px; }
+
+#order-form { display: none; }
+
+#order-form.active { display: block; }
+
+.fieldset {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 10px;
+}
+
+.fieldset input {  
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 2px 2px #eee;
+    -webkit-border-radius: 3px;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.fieldset input:focus {
+    border: 1px solid darkgreen;
+    -webkit-box-shadow: 0 0 3px darkgreen;
+    outline: 0;
+}
+
+.fieldset input:last-child { margin-bottom: 0px; }
+
+.fieldset h2 {
+    text-align: center;
+    color: darkgreen;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.items-list li {
+    background: #eee;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.items-list li:last-child { margin-bottom: 0px; }
+
+.items-list li .item-name { float: left; }
+
+.items-list li .item-qty { float: right; color: #333; }
+
+.costs table { width: 100%; }
+
+.costs table tr { border: 1px solid #ccc; background: #eee; }
+.costs table th { font-weight: bold; color: #333; text-align: right; padding-right: 10px; }
+.costs table td { padding: 10px; }
+
+.costs table tr.total { margin-top: 10px; }
