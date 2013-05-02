@@ -42,7 +42,7 @@
                     <h6 class="name">{{item.name}}</h6>
                     <h6 class="price">${{item.price}}</h6>
                 </div>
-               <div class="image-quantity">
+               <div class="image-quantity group">
                    <div class="product-image"><img src="{{item.image}}"></div>
                    <div class="set-quantity">
                         <a href="#" class="order remove"><i class="ss-icon ss-symbolicons-block ss-hyphen"></i></a>
@@ -70,20 +70,15 @@
     {{> header}}
     
     <div class="container" id="checkout">
-        
-        <!-- 
-        <a class="greenbutton" href="{{cartPath}}">
-        <i class="ss-icon ss-symbolicons-block ss-undo"></i> Back To Shopping Cart</a> 
-        -->
-        
+
         <div class="age-check checker active">
             <p>Instabooze will <strong>not</strong> deliver packages to minors. Orders placed by minors will not be delivered and payment will be <em class="red"><strong>forfeited without refund</strong></em>. Are you at least <strong>21 years old</strong>?</p>
-            <a href="#" id="verify-age" class="greenbutton">Yes, I'm 21 or older.</a>
+            <a href="#" id="verify-age" class="greenbutton"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm 21 or older.</a>
         </div> <!-- end .age-check -->
 
         <div class="loc-check checker">
             <p>Instabooze will <strong>not</strong> deliver packages to minors. Orders placed by minors will not be delivered and payment will be <em class="red"><strong>forfeited without refund</strong></em>. Are you at least <strong>21 years old</strong>?</p>
-            <a href="#" id="verify-loc" class="greenbutton">Yes, I'm in the delivery range</a>
+            <a href="#" id="verify-loc" class="greenbutton"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm in the delivery range</a>
         </div> <!-- end .loc-check -->        
 
         <form id="order-form" action="" method="POST">
@@ -160,6 +155,13 @@
     
     <header id="header" class="fixed-bar">
         {{>title}}
+        
+        <div class="cart">
+            <a href="{{cartPath}}">
+            <i class="ss-icon ss-symbolicons-block ss-undo"></i>
+            <i class="ss-icon ss-symbolicons-block ss-cart"></i></a>
+        </div>
+        
     </header>
     
 </template>

@@ -16,3 +16,9 @@
 }
 
 .red { color: red; }
+
+#header.fixed-bar .ib-brand { float: left; }
+
+#header.fixed-bar .cart { float: right; margin: 5px 10px 0 0; }
+
+#header.fixed-bar .cart a { color: #fff; text-decoration: none; }
