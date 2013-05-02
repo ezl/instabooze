@@ -75,11 +75,15 @@ if (Meteor.isClient) {
         return getCartTotal();
     };
 
-    Template.checkout.deliveryCost = function() {
+    var getNumItemsInCart = function() {
         var qty = 0;
         _.each(Session.get("cart"), function(item) {
             qty += item.qty;
         });
+        return qty;
+    };
+    Template.checkout.deliveryCost = function() {
+        qty = getNumItemsInCart();
         if (qty == 0)
             return 0.0;
         if (qty > 3)
@@ -88,21 +92,25 @@ if (Meteor.isClient) {
     };
 
     Template.checkout.taxCost = function() {
-        return (Template.checkout.subtotal() + Template.checkout.deliveryCost()) * 0.1025;
+        var taxRate = 0.1025;
+        var taxAmount = (Template.checkout.subtotal() + Template.checkout.deliveryCost()) * taxRate;
+        return Math.round(taxAmount * 100) / 100;
     };
 
     Template.checkout.orderTotal = function() {
-        return Template.checkout.subtotal() + Template.checkout.deliveryCost() + Template.checkout.taxCost();
+        var unrounded = Template.checkout.subtotal() + Template.checkout.deliveryCost() + Template.checkout.taxCost();
+        return Math.round(unrounded * 100) / 100;
+
     };
 
     Template.stripe.stripeDescription = function() {
-        var amount = (Math.round(getCartTotal()) * 100 / 100).toString();
-        var items = getCartItems().length;
+        var amount = getCartTotal().toString();
+        var items = getNumItemsInCart();
         return items + " Items ($" + amount + ")";
     };
 
     Template.stripe.stripeAmount = function() {
-        return Math.round((getCartTotal()) * 100).toString();
+        return Math.round(getCartTotal() * 100).toString();
     };
 
     var getCartItems = function() {

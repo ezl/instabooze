@@ -81,39 +81,46 @@
 
 <template name="checkout">
     {{> header}}
-    <div class="container">
-<a class="greenbutton" href="{{cartPath}}">
-<i class="ss-icon ss-symbolicons-block ss-undo"></i>
-<i class="ss-icon ss-symbolicons-block ss-cart" style="display:none;"></i>
-</i> Back To Shopping Cart</a>
-<form action="" method="POST">
+    <div class="container" id="checkout">
+        <a class="greenbutton" href="{{cartPath}}">
+        <i class="ss-icon ss-symbolicons-block ss-undo"></i> Back To Shopping Cart</a>
+        <form action="" method="POST">
+        <p class="checkbox-label">
+            <input id="21" name="21" type="checkbox">
+            <label for="21">Yes, I'm 21 or older.</label>
+        </p>
+        <p class="checkbox-label">
+            <input type="checkbox" id="deliveryRange" name="deliveryRange">
+            <label for="deliveryRange">Yes, The order is in <a href="">Instabooze's delivery range</a></label>
+        </p>
 
-<input id="21" name="21" type="checkbox">
-<label for="21">Yes, I'm 21 or older.</label>
-<input type="checkbox" id="deliveryRange" name="deliveryRange">
-<label for="deliveryRange">Yes, The order is in<a href="">Instabooze's delivery range</a></label>
-<br>
-<br>
-<h2>Where Should We Bring Your Order?</h2>
-<input placeholder="Name" name="name"></input>
-<input placeholder="Address" name="address"></input>
-<input placeholder="Email" name="email"></input>
-<input placeholder="Cell Phone Number" name="cell"></input>
-<input type="hidden" name="cart" value="{{cart_repr}}"></input>
-<div style="display:none;">
-Here's the stuff you ordered:
-<ul>
-{{#each cartItems}}
-<li>{{qty}}: {{item.description}} -- {{item._id}}</li>
-{{/each}}
-</ul>
-</div>
-Subtotal: ${{subtotal}}<br/>
-Delivery: ${{deliveryCost}}<br/>
-Tax: ${{taxCost}}<br/>
-<b>Total: ${{orderTotal}}</b><br/>
-{{>stripe}}
-</form>
+        <h2>Where Should We Bring Your Order?</h2>
+        <input type="text" placeholder="Name" name="name"></input>
+        <input type="text" placeholder="Address" name="address"></input>
+        <input type="text" placeholder="Email" name="email"></input>
+        <input type="text" placeholder="Cell Phone Number" name="cell"></input>
+        <input type="hidden" name="cart" value="{{cart_repr}}"></input>
+
+        <div style="display:none;">
+            <h2>Here's the stuff you ordered:</h2>
+            <ul>
+                {{#each cartItems}}
+                    {{#if qty }}
+                        <li>{{item.name}} ({{qty}})</li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+        <footer id="footer" class="fixed-bar">
+        <div style="float:right;">
+            <p class="right">Subtotal: ${{subtotal}}</p>
+            <p class="right">Delivery: ${{deliveryCost}}</p>
+            <p class="right">Tax: ${{taxCost}}</p>
+            <p class="right"><b>Total: ${{orderTotal}}</b></p>
+        </div>
+            {{>stripe}}
+        </footer>
+        </form>
     </div> <!-- /container -->
 </template>
 
