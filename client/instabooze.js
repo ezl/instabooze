@@ -145,11 +145,6 @@ if (Meteor.isClient) {
         var items = getNumItemsInCart();
         return items + " Items ($" + amount + ")";
     };
-    Template.stripe.stripeDescription = getStripeDescription;
-
-    Template.stripe.stripeAmount = function() {
-        return Math.round(getOrderTotal() * 100);
-    };
 
     var getCartItems = function() {
         return _.values(Session.get("cart"));
@@ -166,20 +161,6 @@ if (Meteor.isClient) {
     Template.footer.orderTotal = function() {
         return getCartTotal();
     }
-
-    Template.checkout.rendered = function() {
-        stripeSnippet = [
-        '  <script',
-        '    src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"',
-        //'    data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"',
-        //'    data-amount="2000"',
-        //'    data-name="Demo Site"',
-        //'    data-description="2 widgets ($20.00)"',
-        //'    data-image="/128x128.png">',
-        '  </script>',
-        ].join("");
-        $("body").append(stripeSnippet);
-    };
 
     Template.checkout.cart_repr = function() {
         var cart = {};

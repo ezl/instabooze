@@ -28,20 +28,6 @@
 </div>
 </template>
 
-<template name="stripe">
-<div class="stripe-checkout-container">
-
-  <script
-    src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-    data-key="pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8"
-    data-name="Instabooze"
-    data-amount="{{stripeAmount}}"
-    data-description="{{stripeDescription}}"
-    data-image="/marketplace.png">
-  </script>
-</div>
-</template>
-
 <template name="cart">
 
     {{> header}}
@@ -119,7 +105,6 @@
             <p class="right">Tax: ${{taxCost}}</p>
             <p class="right"><b>Total: ${{orderTotal}}</b></p>
         </div>
-            {{>stripe}}
         </footer>
         </form>
     </div> <!-- /container -->
