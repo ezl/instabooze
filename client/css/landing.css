@@ -44,20 +44,15 @@
     padding: 10%;
 }
 
+#landing {
+    background-size: cover;
+}
+
 @media screen and (min-width: 320px) {
-    
-    #landing {
-        background-size: cover;
-    }
-    
-<<<<<<< HEAD
     
     #landing .ib-brand a {
         font-size: 2em;
     }
-=======
-    h1.title a { font-size: 1.25em; }
->>>>>>> e0768535c3a693c8f0993d58e9b68e8864bc3df1
     
     .inner {
         
@@ -67,15 +62,11 @@
 }
 
 @media screen and (min-width: 480px) {
-<<<<<<< HEAD
     
     #landing .ib-brand a {
         font-size: 2.5em;
     }
     
-=======
-    h1.title a { font-size: 1.5em; }
->>>>>>> e0768535c3a693c8f0993d58e9b68e8864bc3df1
 }
 
 
