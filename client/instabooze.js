@@ -56,6 +56,29 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.checkout.events({
+        'click .stripeButton' : function(){
+            var stripeLibraries = $('<script src="https://checkout.stripe.com/v2/checkout.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>');
+            $("body").append(stripeLibraries);
+
+            var token = function(res){
+                var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+                $('form').append($input).submit();
+            };
+
+            StripeCheckout.open({
+                key:         'pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8',
+                address:     true,
+                amount:      5000,
+                name:        'Joes Pistachios',
+                description: 'A bag of Pistachios',
+                panelLabel:  'Checkout',
+                token:       token
+            });
+            return false;
+        }
+    });
+
     Template.cart.events({
         'click .order.remove' : function (e) {
             e.preventDefault();
