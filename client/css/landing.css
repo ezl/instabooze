@@ -11,8 +11,6 @@
     text-shadow: 1px 1px rgba(0, 0, 0, .9);
 }
 
-
-
 .ib-brand a { 
     color: #fff;
     text-shadow: 1px 1px 0px #000;
@@ -52,10 +50,14 @@
         background-size: cover;
     }
     
+<<<<<<< HEAD
     
     #landing .ib-brand a {
         font-size: 2em;
     }
+=======
+    h1.title a { font-size: 1.25em; }
+>>>>>>> e0768535c3a693c8f0993d58e9b68e8864bc3df1
     
     .inner {
         
@@ -65,11 +67,15 @@
 }
 
 @media screen and (min-width: 480px) {
+<<<<<<< HEAD
     
     #landing .ib-brand a {
         font-size: 2.5em;
     }
     
+=======
+    h1.title a { font-size: 1.5em; }
+>>>>>>> e0768535c3a693c8f0993d58e9b68e8864bc3df1
 }
 
 
