@@ -68,15 +68,28 @@ if (Meteor.isClient) {
 
             StripeCheckout.open({
                 key:         'pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8',
-                address:     true,
+                // address:     true,
                 amount:      5000,
-                name:        'Joes Pistachios',
-                description: 'A bag of Pistachios',
-                panelLabel:  'Checkout',
+                name:        'InstaBooze',
+                description: getStripeDescription(),
+                panelLabel:  'Pay',
+                image: "/marketplace.png",
                 token:       token
             });
             return false;
+        },
+        'click input[type="checkbox"]' : function(event){
+            var checkboxes = $('input[type="checkbox"]').length;
+            var checked = $("input:checked" ).length;
+            if (checked === checkboxes) {
+                $("input[type='text']").prop('disabled', false);
+                console.log("enable");
+            } else {
+                $("input[type='text']").prop('disabled', true);
+                console.log("disable all");
+            };
         }
+
     });
 
     Template.cart.events({
@@ -120,20 +133,22 @@ if (Meteor.isClient) {
         return Math.round(taxAmount * 100) / 100;
     };
 
-    Template.checkout.orderTotal = function() {
+    var getOrderTotal = function() {
         var unrounded = Template.checkout.subtotal() + Template.checkout.deliveryCost() + Template.checkout.taxCost();
         return Math.round(unrounded * 100) / 100;
 
     };
+    Template.checkout.orderTotal = getOrderTotal;
 
-    Template.stripe.stripeDescription = function() {
+    var getStripeDescription = function() {
         var amount = getCartTotal().toString();
         var items = getNumItemsInCart();
         return items + " Items ($" + amount + ")";
     };
+    Template.stripe.stripeDescription = getStripeDescription;
 
     Template.stripe.stripeAmount = function() {
-        return Math.round(getCartTotal() * 100).toString();
+        return getOrderTotal();
     };
 
     var getCartItems = function() {

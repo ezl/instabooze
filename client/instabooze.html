@@ -95,10 +95,10 @@
         </p>
 
         <h2>Where Should We Bring Your Order?</h2>
-        <input type="text" placeholder="Name" name="name"></input>
-        <input type="text" placeholder="Address" name="address"></input>
-        <input type="text" placeholder="Email" name="email"></input>
-        <input type="text" placeholder="Cell Phone Number" name="cell"></input>
+        <input disabled type="text" placeholder="Name" name="name"></input>
+        <input disabled type="text" placeholder="Address" name="address"></input>
+        <input disabled type="text" placeholder="Email" name="email"></input>
+        <input disabled type="text" placeholder="Cell Phone Number" name="cell"></input>
         <input type="hidden" name="cart" value="{{cart_repr}}"></input>
 
         <div style="display:none;">
@@ -112,7 +112,7 @@
             </ul>
         </div>
         <footer id="footer" class="fixed-bar">
-        <a class="greenbutton stripeButton">PAY WITH STRIPE</a>
+        <a href="" class="greenbutton stripeButton"><i class="ss-icon ss-symbolicons-block ss-lock"></i> Pay Securely With Credit Card</a>
         <div style="float:right;">
             <p class="right">Subtotal: ${{subtotal}}</p>
             <p class="right">Delivery: ${{deliveryCost}}</p>
