@@ -37,11 +37,11 @@ Meteor.Router.add('/checkout', 'POST', function() {
         'Unit          : ' + '',
         'Email         : ' + post.email,
         'Cell Phone    : ' + post.cell,
-        'Delivery Info : ' + '',
+        'Delivery Info : ' + '\n' + orderText,
     ].join('\n');
     process.env.MAIL_URL = "smtp://localhost/";
     Email.send({
-        to: "chromano@gmail.com",
+        to: "ericzliu@gmail.com",
         from: "instabooze@instabooze.net",
         subject: "Your order",
         text: deliveryInformation
