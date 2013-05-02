@@ -15,7 +15,8 @@ h1.title a {
     text-shadow: 1px 1px 0px #000;
     text-decoration: none;
     font-family: 'museo500';
-    font-size: 1.2em;
+    font-size: 1.5em;
+    line-height:1.0em;
 }
 
 .red { color: red; }

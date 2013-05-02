@@ -7,7 +7,21 @@
     background-position: center;
     background-size: 1550px 1130px;
     background-image: url('/images/liquor-bottles.jpg');
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, .9);
 }
+#landing h1 {
+    font-size: 2em;
+    padding-bottom: 1.4em;
+}
+#landing h2 {
+    font-size: 1.4em;
+    line-height: 1.4em;
+    padding-bottom: 2.2em;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, .9);
+}
+
+#landing a.greenbutton { margin-bottom:25%; }
 .outer-wrapper {
     z-index: 1;
     position: relative;
@@ -19,7 +33,8 @@
 }
 .inner {
     display: table-cell;
-    text-align: center;
-    vertical-align: middle
+    /* text-align: center; */
+    vertical-align: middle;
+    padding: 10%;
 }
 

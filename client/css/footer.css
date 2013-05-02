@@ -7,7 +7,8 @@
 
 #footer .total p { color: limegreen; margin-top: 10px; font-size: 1.25em; float: left; }
 
-#footer .button { clear: both; background: limegreen; display: block; padding: 10px 0; color: #fff; text-shadow: 1px 1px 1px forestgreen; text-decoration: none; -webkit-border-radius: 3px; text-align: center; -moz-border-radius: 3px; border-radius: 3px; }
+.greenbutton { clear: both; border: 4px solid green; background: forestgreen; display: block; padding: 10px 0; color: #fff; text-shadow: 1px 1px  rgba(0,0,0,0.6); text-decoration: none; -webkit-border-radius: 3px; text-align: center; -moz-border-radius: 3px; border-radius: 3px; font-weight: bold; font-size: 1.3em;}
+.greenbutton:hover { background: green; }
 
 .bottles { float: left; margin: 13px 0 0 15px; }
 

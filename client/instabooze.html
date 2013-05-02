@@ -16,7 +16,7 @@
     <div class="inner">
         {{>title}}
         <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
-        <span><a class="button" href="{{cartPath}}">Get Some Alcohol Delivered Now!</a></span>
+        <a class="greenbutton" href="{{cartPath}}">Get Some Alcohol Delivered Now!</a>
     </div>
 </div>
 </template>
@@ -81,7 +81,11 @@
 
 <template name="checkout">
     {{> header}}
-<a class="button" href="{{cartPath}}">&lt; Back To Shopping Cart</a>
+    <div class="container">
+<a class="greenbutton" href="{{cartPath}}">
+<i class="ss-icon ss-symbolicons-block ss-undo"></i>
+<i class="ss-icon ss-symbolicons-block ss-cart" style="display:none;"></i>
+</i> Back To Shopping Cart</a>
 <form action="" method="POST">
 
 <input id="21" name="21" type="checkbox">
@@ -110,6 +114,7 @@ Tax: ${{taxCost}}<br/>
 <b>Total: ${{orderTotal}}</b><br/>
 {{>stripe}}
 </form>
+    </div> <!-- /container -->
 </template>
 
 <template name="title">
@@ -135,7 +140,7 @@ Tax: ${{taxCost}}<br/>
         </div>
     </div>
     
-    <a class="button" href="{{checkoutPath}}">Booze Me!</a>
+    <a class="greenbutton" href="{{checkoutPath}}"><i class="ss-icon ss-symbolicons-block ss-beer"></i> Booze Me!</a>
 
 </footer>
 
