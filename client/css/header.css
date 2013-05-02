@@ -10,13 +10,15 @@
     top: 0;
 }
 
-h1.title a {
-    color: #fff;
-    text-shadow: 1px 1px 0px #000;
-    text-decoration: none;
-    font-family: 'museo500';
+#header.fixed-bar .ib-brand a {
     font-size: 1.5em;
-    line-height:1.0em;
+    line-height: 1.0em;
 }
 
 .red { color: red; }
+
+#header.fixed-bar .ib-brand { float: left; }
+
+#header.fixed-bar .cart { float: right; margin: 5px 10px 0 0; }
+
+#header.fixed-bar .cart a { color: #fff; text-decoration: none; }

@@ -42,7 +42,7 @@
                     <h6 class="name">{{item.name}}</h6>
                     <h6 class="price">${{item.price}}</h6>
                 </div>
-               <div class="image-quantity">
+               <div class="image-quantity group">
                    <div class="product-image"><img src="{{item.image}}"></div>
                    <div class="set-quantity">
                         <a href="#" class="order remove"><i class="ss-icon ss-symbolicons-block ss-hyphen"></i></a>
@@ -66,11 +66,23 @@
 </template>
 
 <template name="checkout">
+
     {{> header}}
+    
     <div class="container" id="checkout">
-        <a class="greenbutton" href="{{cartPath}}">
-        <i class="ss-icon ss-symbolicons-block ss-undo"></i> Back To Shopping Cart</a>
-        <form action="" method="POST">
+
+        <div class="age-check checker active">
+            <p>Instabooze will <strong>not</strong> deliver packages to minors. Orders placed by minors will not be delivered and payment will be <em class="red"><strong>forfeited without refund</strong></em>. Are you at least <strong>21 years old</strong>?</p>
+            <a href="#" id="verify-age" class="greenbutton"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm 21 or older.</a>
+        </div> <!-- end .age-check -->
+
+        <div class="loc-check checker">
+            <p>Instabooze will <strong>not</strong> deliver packages to minors. Orders placed by minors will not be delivered and payment will be <em class="red"><strong>forfeited without refund</strong></em>. Are you at least <strong>21 years old</strong>?</p>
+            <a href="#" id="verify-loc" class="greenbutton"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm in the delivery range</a>
+        </div> <!-- end .loc-check -->        
+
+        <form id="order-form" action="" method="POST">
+        <!--
         <p class="checkbox-label">
             <input id="21" name="21" type="checkbox">
             <label for="21">Yes, I'm 21 or older.</label>
@@ -78,46 +90,78 @@
         <p class="checkbox-label">
             <input type="checkbox" id="deliveryRange" name="deliveryRange">
             <label for="deliveryRange">Yes, The order is in <a href="">Instabooze's delivery range</a></label>
-        </p>
-
-        <h2>Where Should We Bring Your Order?</h2>
-        <input disabled type="text" placeholder="Name" name="name"></input>
-        <input disabled type="text" placeholder="Address" name="address"></input>
-        <input disabled type="text" placeholder="Email" name="email"></input>
-        <input disabled type="text" placeholder="Cell Phone Number" name="cell"></input>
-        <input type="hidden" name="cart" value="{{cart_repr}}"></input>
-
-        <div style="display:none;">
-            <h2>Here's the stuff you ordered:</h2>
-            <ul>
+        </p> -->
+        
+            <fieldset class="where fieldset">
+            <h2>Where Should We Bring Your Order?</h2>
+            <input type="text" placeholder="Name" name="name"></input>
+            <input type="text" placeholder="Address" name="address"></input>
+            <input type="text" placeholder="Email" name="email"></input>
+            <input type="text" placeholder="Cell Phone Number" name="cell"></input>
+            <input type="hidden" name="cart" value="{{cart_repr}}"></input>
+        </fieldset>
+            
+        <fieldset class="summary fieldset">
+            <h2>Here's what you're ordering:</h2>
+            <ul class="items-list">
                 {{#each cartItems}}
                     {{#if qty }}
-                        <li>{{item.name}} ({{qty}})</li>
+                        <li class="group">
+                            <span class="item-name">{{item.name}}</span> 
+                            <span class="item-qty"><strong>x {{qty}}</strong></span>
+                        </li>
                     {{/if}}
                 {{/each}}
             </ul>
-        </div>
-        <footer id="footer" class="fixed-bar">
-        <a href="" class="greenbutton stripeButton"><i class="ss-icon ss-symbolicons-block ss-lock"></i> Pay Securely With Credit Card</a>
-        <div style="float:right;">
-            <p class="right">Subtotal: ${{subtotal}}</p>
-            <p class="right">Delivery: ${{deliveryCost}}</p>
-            <p class="right">Tax: ${{taxCost}}</p>
-            <p class="right"><b>Total: ${{orderTotal}}</b></p>
-        </div>
-        </footer>
-        </form>
+        </fieldset>
+            
+        <fieldset class="costs fieldset">
+            <h2>How much it will cost:</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Subtotal:</th>
+                        <td>${{subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th>Delivery:</th>
+                        <td>${{deliveryCost}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tax:</th>
+                        <td>${{taxCost}}</td>
+                    </tr>
+                    <tr class="total">
+                        <th>Total:</th>
+                        <td>${{orderTotal}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+            
+            <a href="" id="place-order" class="greenbutton stripeButton"><i class="ss-icon ss-symbolicons-block ss-lock"></i> Pay Securely With Credit Card</a>
+
+        </form> <!-- end form -->
+        
     </div> <!-- /container -->
+    
 </template>
 
 <template name="title">
-    <h1 class="title"><a href="#">insta<span class="red">booze</span>.net</span></a></h1>
+    <h1 class="ib-brand"><a href="#">insta<span class="red">booze</span></a></h1>
 </template>
 
 <template name="header">
     
     <header id="header" class="fixed-bar">
         {{>title}}
+        
+        <div class="cart">
+            <a href="{{cartPath}}">
+            <i class="ss-icon ss-symbolicons-block ss-undo"></i>
+            <i class="ss-icon ss-symbolicons-block ss-cart"></i></a>
+        </div>
+        
     </header>
     
 </template>
