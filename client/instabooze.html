@@ -168,9 +168,17 @@
         {{>title}}
         
         <div class="cart">
+            {{#if pageIsCart }}
+            <a href="{{checkoutPath}}">
+                <i class="ss-icon ss-symbolicons-block ss-cart"></i>
+                <i class="ss-icon ss-symbolicons-block ss-navigateright"></i>
+            </a>
+            {{else}}
             <a href="{{cartPath}}">
-            <i class="ss-icon ss-symbolicons-block ss-undo"></i>
-            <i class="ss-icon ss-symbolicons-block ss-cart"></i></a>
+                <i class="ss-icon ss-symbolicons-block ss-undo"></i>
+                <i class="ss-icon ss-symbolicons-block ss-cart"></i>
+            </a>
+            {{/if}}
         </div>
         
     </header>

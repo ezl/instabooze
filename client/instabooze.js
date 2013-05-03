@@ -39,6 +39,11 @@ if (Meteor.isClient) {
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
     };
+
+    Template.header.pageIsCart = function() {
+        return Meteor.Router.page() === "cart";
+    };
+
     Template.footer.cartItems = function() {
         itemlist=[];
         _.each(Session.get("cart"), function(item) {
