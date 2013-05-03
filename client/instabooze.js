@@ -35,8 +35,6 @@ if (Meteor.isClient) {
         '/thankyou': 'thankyou',
     });
 
-
-
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
     };
@@ -191,9 +189,10 @@ if (Meteor.isClient) {
 
     };
 
+/*
     Meteor.Router.filters({
         'checkCartHasItems': function(page) {
-            if (getNumItemsInCart > 0) {
+            if (getNumItemsInCart() > 0) {
                 return page;
             } else {
                 return 'cart';
@@ -202,4 +201,5 @@ if (Meteor.isClient) {
     });
 
     Meteor.Router.filter('checkCartHasItems', {only: 'checkout'});
+*/
 }
