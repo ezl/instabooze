@@ -40,6 +40,10 @@ if (Meteor.isClient) {
         return _.values(Session.get("cart"));
     };
 
+    Template.header.page = function() {
+        return Meteor.Router.page();
+    };
+
     Template.header.pageIsCart = function() {
         return Meteor.Router.page() === "cart";
     };
