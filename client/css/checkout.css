@@ -129,7 +129,7 @@ input[type="checkbox"] {
 
 .items-list li:last-child { margin-bottom: 0px; }
 
-.items-list li .item-name { float: left; }
+.items-list li .item-name { float: left; line-height:1.3;}
 
 .items-list li .item-qty { float: right; color: #333; }
 

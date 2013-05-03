@@ -94,16 +94,23 @@
         </fieldset>
 
         <fieldset class="summary fieldset">
-            <h2>You're probably drunk, so here's a reminder of what you're ordering:</h2>
+            <h2>You're Probably Drunk, So Here's A Reminder Of What You're Ordering:</h2>
             <ul class="items-list">
-                {{#each cartItems}}
-                    {{#if qty }}
-                        <li class="group">
-                            <span class="item-name">{{item.name}}</span> 
-                            <span class="item-qty"><strong>x {{qty}}</strong></span>
-                        </li>
-                    {{/if}}
-                {{/each}}
+                {{#if orderedItems.length }}
+                    {{#each cartItems}}
+                        {{#if qty }}
+                            <li class="group">
+                                <span class="item-name">{{item.name}}</span> 
+                                <span class="item-qty"><strong>x {{qty}}</strong></span>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                {{else}}
+                    <li class="group">
+                        <span class="item-name">Actually, you're <strong>definitely</strong> drunk. Because you're trying to check out and you have nothing in your cart. You should probably <a href="{{cartPath}}">add some items in the shopping cart.</a></span>
+                    </li>
+                {{/if}}
+
             </ul>
         </fieldset>
 

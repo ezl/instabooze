@@ -43,7 +43,7 @@ if (Meteor.isClient) {
         return Meteor.Router.page() === "cart";
     };
 
-    Template.footer.cartItems = function() {
+    Template.footer.orderedItems = function() {
         itemlist=[];
         _.each(Session.get("cart"), function(item) {
             for (var i=0;i<item.qty;i++) {
@@ -52,6 +52,8 @@ if (Meteor.isClient) {
         });
         return itemlist;
     };
+
+    Template.checkout.orderedItems = Template.footer.orderedItems; // i hate this. f me.
 
     Template.cart.events({
          'click .order.add' : function (e) {
