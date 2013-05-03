@@ -73,14 +73,14 @@
 
         <div class="age-check checker active">
             <p>Instabooze will <strong>not</strong> deliver packages to minors. Orders placed by minors will not be delivered and payment will be <em class="red"><strong>forfeited without refund</strong></em>. Are you at least <strong>21 years old</strong>?</p>
-            <a href="#" id="verify-age" class="green button"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm 21 or older.</a>
-            <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm not.</a>
+            <a href="#" id="verify-age" class="green button"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm 21 or older</a>
+            <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm 20 years old or younger</a>
         </div> <!-- end .age-check -->
 
         <div class="loc-check checker">
             <p>Orders outside our delivery range will not be delivered! Are you sure you're in our <a href="">delivery range</a>? Please check, if it's your first time.</p>
             <a href="#" id="verify-loc" class="green button"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm definitely in the delivery range</a>
-            <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm not.</a>
+            <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm not in the delivery range</a>
         </div> <!-- end .loc-check -->        
 
         <form id="order-form" action="" method="POST">
@@ -107,7 +107,7 @@
                     {{/each}}
                 {{else}}
                     <li class="group">
-                        <span class="item-name">Actually, you're <strong>definitely</strong> drunk. Because you're trying to check out and you have nothing in your cart. You should probably <a href="{{cartPath}}">add some items in the shopping cart.</a></span>
+                        <span class="item-name">Actually, you're <strong>definitely</strong> drunk. Because you're trying to check out and you have nothing in your cart. You should probably <a href="{{cartPath}}"><strong>add some items in the shopping cart.</strong></a></span>
                     </li>
                 {{/if}}
 
