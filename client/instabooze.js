@@ -36,6 +36,7 @@ if (Meteor.isClient) {
     });
 
 
+
     Template.cart.cartItems = function () {
         return _.values(Session.get("cart"));
     };
@@ -104,18 +105,6 @@ if (Meteor.isClient) {
             });
             return false;
         },
-        'click input[type="checkbox"]' : function(event){
-            var checkboxes = $('input[type="checkbox"]').length;
-            var checked = $("input:checked" ).length;
-            if (checked === checkboxes) {
-                $("input[type='text']").prop('disabled', false);
-                console.log("enable");
-            } else {
-                $("input[type='text']").prop('disabled', true);
-                console.log("disable all");
-            };
-        }
-
     });
 
     Template.cart.events({
@@ -201,4 +190,16 @@ if (Meteor.isClient) {
         return cartString;
 
     };
+
+    Meteor.Router.filters({
+        'checkCartHasItems': function(page) {
+            if (getNumItemsInCart > 0) {
+                return page;
+            } else {
+                return 'cart';
+            }
+        }
+    });
+
+    Meteor.Router.filter('checkCartHasItems', {only: 'checkout'});
 }
