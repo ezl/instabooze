@@ -82,16 +82,6 @@
         </div> <!-- end .loc-check -->        
 
         <form id="order-form" action="" method="POST">
-        <!--
-        <p class="checkbox-label">
-            <input id="21" name="21" type="checkbox">
-            <label for="21">Yes, I'm 21 or older.</label>
-        </p>
-        <p class="checkbox-label">
-            <input type="checkbox" id="deliveryRange" name="deliveryRange">
-            <label for="deliveryRange">Yes, The order is in <a href="">Instabooze's delivery range</a></label>
-        </p> -->
-        
             <fieldset class="where fieldset">
             <h2>Where Should We Bring Your Order?</h2>
             <input type="text" placeholder="Name" name="name"></input>
@@ -100,7 +90,7 @@
             <input type="text" placeholder="Cell Phone Number" name="cell"></input>
             <input type="hidden" name="cart" value="{{cart_repr}}"></input>
         </fieldset>
-            
+
         <fieldset class="summary fieldset">
             <h2>Here's what you're ordering:</h2>
             <ul class="items-list">
@@ -114,7 +104,7 @@
                 {{/each}}
             </ul>
         </fieldset>
-            
+
         <fieldset class="costs fieldset">
             <h2>How much it will cost:</h2>
             <table>
@@ -151,6 +141,9 @@
                     <img src="/images/creditcards/jcb_32.png" />
                 </p>
             </a>
+
+            <p class="stripesecuritynote">InstaBooze uses <a href="https://www.stripe.com/">Stripe</a>, a 3rd party payment processor for securely processing payments, because your information security is very important to us.</p>
+            <p class="stripesecuritynote">Stripe handles online credit card payments for thousands of businesses and organizations, including Fortune 500 companies.</p>
 
         </form> <!-- end form -->
         

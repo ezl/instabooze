@@ -139,3 +139,6 @@ input[type="checkbox"] {
 .costs table td { padding: 10px; }
 
 .costs table tr.total { margin-top: 10px; }
+
+.stripesecuritynote { color: #666; margin-top: 15px; line-height: 1.25;}
+.stripesecuritynote a { color: forestgreen;}
