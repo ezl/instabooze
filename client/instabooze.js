@@ -61,6 +61,10 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.checkout.rendered = function() {
+        var stripeLibraries = $('<script src="https://checkout.stripe.com/v2/checkout.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>');
+        $("body").append(stripeLibraries);
+    };
     Template.checkout.events({
         'click #verify-age': function(e, t) {
             e.preventDefault();
@@ -83,9 +87,6 @@ if (Meteor.isClient) {
 
         },
         'click .stripeButton' : function(){
-            var stripeLibraries = $('<script src="https://checkout.stripe.com/v2/checkout.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>');
-            $("body").append(stripeLibraries);
-
             var token = function(res){
                 var $input = $('<input type=hidden name=stripeToken />').val(res.id);
                 $('form').append($input).submit();
