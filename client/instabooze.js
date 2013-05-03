@@ -33,6 +33,7 @@ if (Meteor.isClient) {
         '/cart': 'cart',
         '/checkout': 'checkout',
         '/thankyou': 'thankyou',
+        '/deliveryzones': 'deliveryzones',
     });
 
     Template.cart.cartItems = function () {
