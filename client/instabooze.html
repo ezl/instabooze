@@ -16,7 +16,7 @@
     <div class="inner">
         {{>title}}
         <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
-        <a class="greenbutton" href="{{cartPath}}">Get Some Alcohol Delivered Now!</a>
+        <a class="green button" href="{{cartPath}}">Get Some Alcohol Delivered Now!</a>
     </div>
 </div>
 </template>
@@ -73,12 +73,14 @@
 
         <div class="age-check checker active">
             <p>Instabooze will <strong>not</strong> deliver packages to minors. Orders placed by minors will not be delivered and payment will be <em class="red"><strong>forfeited without refund</strong></em>. Are you at least <strong>21 years old</strong>?</p>
-            <a href="#" id="verify-age" class="greenbutton"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm 21 or older.</a>
+            <a href="#" id="verify-age" class="green button"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm 21 or older.</a>
+            <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm not.</a>
         </div> <!-- end .age-check -->
 
         <div class="loc-check checker">
             <p>Orders outside our delivery range will not be delivered! Are you sure you're in our <a href="">delivery range</a>? Please check, if it's your first time.</p>
-            <a href="#" id="verify-loc" class="greenbutton"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm definitely in the delivery range</a>
+            <a href="#" id="verify-loc" class="green button"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm definitely in the delivery range</a>
+            <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm not.</a>
         </div> <!-- end .loc-check -->        
 
         <form id="order-form" action="" method="POST">
@@ -129,7 +131,7 @@
             </table>
         </fieldset>
             
-            <a href="" id="place-order" class="greenbutton stripeButton">
+            <a href="" id="place-order" class="green button stripeButton">
                 <i class="ss-icon ss-symbolicons-block ss-lock"></i> Pay Securely With Credit Card<br><br>
                 <p>
 
@@ -189,7 +191,7 @@
         </div>
     </div>
     
-    <a class="greenbutton" href="{{checkoutPath}}"><i class="ss-icon ss-symbolicons-block ss-beer"></i> Booze Me!</a>
+    <a class="green button" href="{{checkoutPath}}"><i class="ss-icon ss-symbolicons-block ss-beer"></i> Booze Me!</a>
 
 </footer>
 
