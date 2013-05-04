@@ -14,6 +14,9 @@ Meteor.startup(function() {
     });
 });
 
+
+// HELPER FUNCTIONS
+
     var updateCart = function(itemID, delta) {
         // Get the shopping cart
         var cart = Session.get("cart");
@@ -57,6 +60,7 @@ Meteor.startup(function() {
         return Math.round(sum * 100) / 100;
     }
 
+// END HELPDER FUNCTIONS
 
 if (Meteor.isClient) {
 
@@ -79,7 +83,7 @@ if (Meteor.isClient) {
 
     Template.header.pageIsCheckout = function() {
         return Meteor.Router.page() === "checkout";
-    };
+    }; // these just feel really dumb...
 
     Template.footer.orderTotal = function() {
         return getCartTotal();
@@ -93,10 +97,6 @@ if (Meteor.isClient) {
             };
         });
         return itemlist;
-    };
-
-    Template.cart.cartItems = function () {
-        return _.values(Session.get("cart"));
     };
 
     Template.cart.cartItems = function() {
