@@ -196,7 +196,6 @@ if (Meteor.isClient) {
             };
         });
         cartString = JSON.stringify(cart);
-        console.log(cartString);
         return cartString;
 
     };
