@@ -181,15 +181,14 @@
     <header id="header" class="fixed-bar">
         {{>title}}
 
-        <span style="color:white">{{page}}</span> 
-        
         <div class="cart">
             {{#if pageIsCart }}
             <a href="{{checkoutPath}}">
                 <i class="ss-icon ss-symbolicons-block ss-cart"></i>
                 <i class="ss-icon ss-symbolicons-block ss-navigateright"></i>
             </a>
-            {{else}}
+            {{/if}}
+            {{#if pageIsCheckout }}
             <a href="{{cartPath}}">
                 <i class="ss-icon ss-symbolicons-block ss-undo"></i>
                 <i class="ss-icon ss-symbolicons-block ss-cart"></i>

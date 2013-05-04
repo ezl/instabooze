@@ -48,6 +48,10 @@ if (Meteor.isClient) {
         return Meteor.Router.page() === "cart";
     };
 
+    Template.header.pageIsCheckout = function() {
+        return Meteor.Router.page() === "checkout";
+    };
+
     Template.footer.orderedItems = function() {
         itemlist=[];
         _.each(Session.get("cart"), function(item) {
