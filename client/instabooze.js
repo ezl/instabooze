@@ -34,6 +34,7 @@ if (Meteor.isClient) {
         '/checkout': 'checkout',
         '/thankyou': 'thankyou',
         '/deliveryzones': 'deliveryzones',
+        '/fees': 'fees',
     });
 
     Template.cart.cartItems = function () {

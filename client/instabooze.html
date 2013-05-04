@@ -65,6 +65,24 @@
     
 </template>
 
+<template name="fees">
+    {{> header}}
+    <div class="container" id="fees">
+        <fieldset class="costs fieldset">
+            <h2>What Are The Delivery Fees?</h2>
+            <ul class="items-list">
+                <li class="group">
+                    <span class="item-name">3 items or less</span> 
+                    <span class="item-qty"><strong>$5</strong></span>
+                <li class="group">
+                    <span class="item-name">4 items or more</span> 
+                    <span class="item-qty"><strong>$10</strong></span>
+                </li>
+            </ul>
+        </fieldset>
+    </div>
+</template>
+
 <template name="deliveryzones">
 
     {{> header}}
@@ -143,7 +161,7 @@
                     {{/each}}
                 {{else}}
                     <li class="group">
-                        <span class="item-name">Actually, you're <strong>definitely</strong> drunk. Because you're trying to check out and you have nothing in your cart. You should probably <a href="{{cartPath}}"><strong>add some items in the shopping cart.</strong></a></span>
+                        <span class="item-name">Actually, you're <strong>definitely</strong> drunk.<br><br>Because you're trying to check out and you have nothing in your cart. You should probably <a href="{{cartPath}}"><strong>add some items in the shopping cart.</strong></a></span>
                     </li>
                 {{/if}}
 
