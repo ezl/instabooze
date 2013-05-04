@@ -1,6 +1,6 @@
 Meteor.Router.add('/checkout', 'POST', function() {
     var post = this.request.body;
-    console.log("POST REQUEST:", post);
+    // console.log("POST REQUEST:", post);
     var cart = JSON.parse(post.cart);
     var cartTotal = 0;
     var orderText = "";
@@ -12,10 +12,8 @@ Meteor.Router.add('/checkout', 'POST', function() {
     var total_qty = 0;
     _.each(_.keys(cart), function(id) {
         product = Products.findOne({_id: id});
-        // console.log(product, product.name, product.price);
         qty = cart[id];
         total_qty += cart[id];
-        // console.log(qty);
         orderText += qty + '\t' + product.price + '\t' + product.name + '\n';
         cartTotal += qty * product.price;
     });
@@ -29,8 +27,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
 
     orderText += cartTotal + " Total";
     var stripeChargeAmount = parseInt(cartTotal * 100);
-    console.log(orderText);
-    console.log(stripeChargeAmount);
+    //console.log(stripeChargeAmount);
     var deliveryInformation = [
         'Name          : ' + post.name,
         'Address       : ' + post.address,
@@ -46,7 +43,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
         subject: "Your order",
         text: deliveryInformation
     });
-    console.log(deliveryInformation);
+    //console.log(deliveryInformation);
 
     return [302, {"Location": "/thankyou"}, "/thankyou"];
 });
