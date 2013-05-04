@@ -22,10 +22,15 @@
 </template>
 
 <template name="thankyou">
-<div>
-    <p>Thank you</p>
-    <p>Share that shit on facebook for a discount the next time.</p>
-</div>
+    {{> header}}
+    <div class="container" id="fees">
+        <fieldset class="costs fieldset">
+            <h2>Thank You For Your Purchase</h2>
+            <p>We will be sending you an email with a receipt for your purchase shortly.</p>
+            <p>Please make sure you are available and ready with a valid state ID when we come with your order. Without that, we <strong class="red">CAN NOT</strong> leave the package with you.</p>
+        </fieldset>
+        <a class="green button">Tell your friends about InstaBooze on Facebook to help us out NOW!</a>
+    </div>
 </template>
 
 <template name="cart">
@@ -65,13 +70,55 @@
     
 </template>
 
+<template name="fees">
+    {{> header}}
+    <div class="container" id="fees">
+        <fieldset class="costs fieldset">
+            <h2>What Are The Delivery Fees?</h2>
+            <ul class="items-list">
+                <li class="group">
+                    <span class="item-name">3 items or less</span> 
+                    <span class="item-qty"><strong>$5</strong></span>
+                <li class="group">
+                    <span class="item-name">4 items or more</span> 
+                    <span class="item-qty"><strong>$10</strong></span>
+                </li>
+            </ul>
+        </fieldset>
+    </div>
+</template>
+
 <template name="deliveryzones">
 
     {{> header}}
 
     <div class="container" id="deliveryzones">
 
-        <img src="/images/maps/lincolnpark.jpg" style="width:100%;" />
+        <section>
+            <fieldset class="costs fieldset">
+                <header><h2>Lincoln Park</h2></header>
+                <img src="/images/maps/lincolnpark.jpg" class="map" />
+                <table>
+                    <tr>
+                        <th>North</th>
+                        <td>Diversey</td>
+                    </tr>
+                    <tr>
+                        <th>South</th>
+                        <td>North Avenue</td>
+                    </tr>
+                    <tr>
+                        <th>East</th>
+                        <td>The Lake</td>
+                    </tr>
+                    <tr>
+                        <th>West</th>
+                        <td>Clybourne</td>
+                    </tr>
+                </table>
+            </fieldset>
+
+        </section>
 
     </div> <!-- #delivery zones -->
 
@@ -119,7 +166,7 @@
                     {{/each}}
                 {{else}}
                     <li class="group">
-                        <span class="item-name">Actually, you're <strong>definitely</strong> drunk. Because you're trying to check out and you have nothing in your cart. You should probably <a href="{{cartPath}}"><strong>add some items in the shopping cart.</strong></a></span>
+                        <span class="item-name">Actually, you're <strong>definitely</strong> drunk.<br><br>Because you're trying to check out and you have nothing in your cart. You should probably <a href="{{cartPath}}"><strong>add some items in the shopping cart.</strong></a></span>
                     </li>
                 {{/if}}
 
