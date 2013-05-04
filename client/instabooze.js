@@ -14,17 +14,49 @@ Meteor.startup(function() {
     });
 });
 
-var updateCart = function(itemID, delta) {
-    // Get the shopping cart
-    var cart = Session.get("cart");
+    var updateCart = function(itemID, delta) {
+        // Get the shopping cart
+        var cart = Session.get("cart");
 
-    // Update item quantity
-    cart[itemID].qty += delta;
-    cart[itemID].qty = Math.max(cart[itemID].qty, 0);
+        // Update item quantity
+        cart[itemID].qty += delta;
+        cart[itemID].qty = Math.max(cart[itemID].qty, 0);
 
-    // Save the cart back to the session
-    Session.set("cart", cart);
-};
+        // Save the cart back to the session
+        Session.set("cart", cart);
+    };
+
+    var getNumItemsInCart = function() {
+        var qty = 0;
+        _.each(Session.get("cart"), function(item) {
+            qty += item.qty;
+        });
+        return qty;
+    };
+
+    var getOrderTotal = function() {
+        var unrounded = Template.checkout.subtotal() + Template.checkout.deliveryCost() + Template.checkout.taxCost();
+        return Math.round(unrounded * 100) / 100;
+    };
+
+    var getStripeDescription = function() {
+        var amount = getOrderTotal().toString();
+        var items = getNumItemsInCart();
+        return items + " Items ($" + amount + ")";
+    };
+
+    var getCartItems = function() {
+        return _.values(Session.get("cart"));
+    };
+
+    var getCartTotal = function() {
+        sum = 0;
+        _.each(Session.get("cart"), function(cartItem) {
+            sum += cartItem.item.price * cartItem.qty;
+        });
+        return Math.round(sum * 100) / 100;
+    }
+
 
 if (Meteor.isClient) {
 
@@ -36,10 +68,6 @@ if (Meteor.isClient) {
         '/deliveryzones': 'deliveryzones',
         '/fees': 'fees',
     });
-
-    Template.cart.cartItems = function () {
-        return _.values(Session.get("cart"));
-    };
 
     Template.header.page = function() {
         return Meteor.Router.page();
@@ -53,6 +81,10 @@ if (Meteor.isClient) {
         return Meteor.Router.page() === "checkout";
     };
 
+    Template.footer.orderTotal = function() {
+        return getCartTotal();
+    }
+
     Template.footer.orderedItems = function() {
         itemlist=[];
         _.each(Session.get("cart"), function(item) {
@@ -63,7 +95,54 @@ if (Meteor.isClient) {
         return itemlist;
     };
 
+    Template.cart.cartItems = function () {
+        return _.values(Session.get("cart"));
+    };
+
+    Template.cart.cartItems = function() {
+        return getCartItems();
+    };
+
     Template.checkout.orderedItems = Template.footer.orderedItems; // i hate this. f me.
+
+    Template.checkout.cartItems = function() {
+        return getCartItems();
+    };
+
+    Template.checkout.subtotal = function() {
+        return getCartTotal();
+    };
+
+    Template.checkout.deliveryCost = function() {
+        qty = getNumItemsInCart();
+        if (qty == 0)
+            return 0.0;
+        if (qty > 3)
+            return 10.0;
+        return 5.0;
+    };
+
+    Template.checkout.taxCost = function() {
+        var taxRate = 0.1025;
+        var taxAmount = (Template.checkout.subtotal() + Template.checkout.deliveryCost()) * taxRate;
+        return Math.round(taxAmount * 100) / 100;
+    };
+
+    Template.checkout.orderTotal = getOrderTotal;
+
+    Template.checkout.cart_repr = function() {
+        var cart = {};
+        _.each(getCartItems(), function(item) {
+            if (item.qty) {
+                console.log(item);
+                cart[item.item._id] = item.qty;
+            };
+        });
+        cartString = JSON.stringify(cart);
+        return cartString;
+    };
+
+    // EVENTS EVENTS EVENTS
 
     Template.cart.events({
          'click .order.add' : function (e) {
@@ -72,10 +151,18 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.cart.events({
+        'click .order.remove' : function (e) {
+            e.preventDefault();
+            updateCart(this.item._id, -1);
+        }
+    });
+
     Template.checkout.rendered = function() {
         var stripeLibraries = $('<script src="https://checkout.stripe.com/v2/checkout.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>');
         $("body").append(stripeLibraries);
     };
+
     Template.checkout.events({
         'click #verify-age': function(e, t) {
             e.preventDefault();
@@ -119,88 +206,6 @@ if (Meteor.isClient) {
         },
     });
 
-    Template.cart.events({
-        'click .order.remove' : function (e) {
-            e.preventDefault();
-            updateCart(this.item._id, -1);
-        }
-    });
-
-    Template.cart.cartItems = function() {
-        return getCartItems();
-    };
-
-    Template.checkout.cartItems = function() {
-        return getCartItems();
-    };
-
-    Template.checkout.subtotal = function() {
-        return getCartTotal();
-    };
-
-    var getNumItemsInCart = function() {
-        var qty = 0;
-        _.each(Session.get("cart"), function(item) {
-            qty += item.qty;
-        });
-        return qty;
-    };
-    Template.checkout.deliveryCost = function() {
-        qty = getNumItemsInCart();
-        if (qty == 0)
-            return 0.0;
-        if (qty > 3)
-            return 10.0;
-        return 5.0;
-    };
-
-    Template.checkout.taxCost = function() {
-        var taxRate = 0.1025;
-        var taxAmount = (Template.checkout.subtotal() + Template.checkout.deliveryCost()) * taxRate;
-        return Math.round(taxAmount * 100) / 100;
-    };
-
-    var getOrderTotal = function() {
-        var unrounded = Template.checkout.subtotal() + Template.checkout.deliveryCost() + Template.checkout.taxCost();
-        return Math.round(unrounded * 100) / 100;
-
-    };
-    Template.checkout.orderTotal = getOrderTotal;
-
-    var getStripeDescription = function() {
-        var amount = getOrderTotal().toString();
-        var items = getNumItemsInCart();
-        return items + " Items ($" + amount + ")";
-    };
-
-    var getCartItems = function() {
-        return _.values(Session.get("cart"));
-    };
-
-    var getCartTotal = function() {
-        sum = 0;
-        _.each(Session.get("cart"), function(cartItem) {
-            sum += cartItem.item.price * cartItem.qty;
-        });
-        return Math.round(sum * 100) / 100;
-    }
-
-    Template.footer.orderTotal = function() {
-        return getCartTotal();
-    }
-
-    Template.checkout.cart_repr = function() {
-        var cart = {};
-        _.each(getCartItems(), function(item) {
-            if (item.qty) {
-                console.log(item);
-                cart[item.item._id] = item.qty;
-            };
-        });
-        cartString = JSON.stringify(cart);
-        return cartString;
-
-    };
 
 /*
     Meteor.Router.filters({
