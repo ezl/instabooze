@@ -132,13 +132,13 @@
 
         <div class="age-check checker active">
             <p>Instabooze will <strong>not</strong> deliver packages to minors. Orders placed by minors will not be delivered and payment will be <em class="red"><strong>forfeited without refund</strong></em>. Are you at least <strong>21 years old</strong>?</p>
-            <a href="#" id="verify-age" class="green button"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm 21 or older</a>
+            <a href="#" id="verify-age" class="green button"><i class="icon-ok-sign"></i> Yes, I'm 21 or older</a>
             <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm 20 years old or younger</a>
         </div> <!-- end .age-check -->
 
         <div class="loc-check checker">
             <p>Orders outside our delivery range will not be delivered! Are you sure you're in our <a href="{{deliveryzonesPath}}">delivery range</a>? Please check, if it's your first time.</p>
-            <a href="#" id="verify-loc" class="green button"><i class="ss-icon ss-symbolicons-block ss-like"></i> Yes, I'm definitely in the delivery range</a>
+            <a href="#" id="verify-loc" class="green button"><i class="icon-ok-sign"></i> Yes, I'm definitely in the delivery range</a>
             <a href="http://www.agkidzone.com/care-bears/" class="redbutton button"><i class="ss-icon ss-symbolicons-block ss-frown"></i> No, I'm not in the delivery range</a>
         </div> <!-- end .loc-check -->        
 
@@ -182,7 +182,7 @@
                         <td>${{subtotal}}</td>
                     </tr>
                     <tr>
-                        <th>Delivery:</th>
+                        <th><a href="{{feesPath}}" class="question"><i class="icon-question-sign"></i></a> Delivery:</th>
                         <td>${{deliveryCost}}</td>
                     </tr>
                     <tr>
@@ -254,7 +254,7 @@
     <div class="total group">
         <p>Total: ${{orderTotal}}</p>
         <div class="bottles group">
-            {{#each cartItems}} <i class="ss-icon ss-symbolicons-block ss-bottle"></i> {{/each}}
+            {{#each cartItems}}<i class="ss-icon ss-symbolicons-block ss-bottle"></i> {{/each}}
         </div>
     </div>
     

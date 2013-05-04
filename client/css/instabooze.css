@@ -26,3 +26,6 @@ strong { font-weight: bold; }
 em { font-style: italic; }
 
 a { color: forestgreen;}
+
+a.question { color:inherit; text-decoration: none;}
+a.question:hover { color: forestgreen;}
