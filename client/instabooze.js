@@ -38,8 +38,8 @@ Meteor.startup(function() {
     };
 
     var getOrderTotal = function() {
-        var unrounded = Template.checkout.subtotal() + Template.checkout.deliveryCost() + Template.checkout.taxCost();
-        return Math.round(unrounded * 100) / 100;
+        var unrounded = parseFloat(Template.checkout.subtotal()) + parseFloat(Template.checkout.deliveryCost()) + parseFloat(Template.checkout.taxCost());
+        return parseFloat(Math.round(unrounded * 100) / 100).toFixed(2);
     };
 
     var getStripeDescription = function() {
@@ -85,8 +85,8 @@ if (Meteor.isClient) {
         return Meteor.Router.page() === "checkout";
     }; // these just feel really dumb...
 
-    Template.footer.orderTotal = function() {
-        return getCartTotal();
+    Template.footer.subtotal = function() {
+        return parseFloat(getCartTotal()).toFixed(2);
     }
 
     Template.footer.orderedItems = function() {
@@ -109,9 +109,7 @@ if (Meteor.isClient) {
         return getCartItems();
     };
 
-    Template.checkout.subtotal = function() {
-        return getCartTotal();
-    };
+    Template.checkout.subtotal = Template.footer.subtotal
 
     Template.checkout.deliveryCost = function() {
         qty = getNumItemsInCart();
@@ -125,7 +123,7 @@ if (Meteor.isClient) {
     Template.checkout.taxCost = function() {
         var taxRate = 0.1025;
         var taxAmount = (Template.checkout.subtotal() + Template.checkout.deliveryCost()) * taxRate;
-        return Math.round(taxAmount * 100) / 100;
+        return parseFloat(Math.round(taxAmount * 100) / 100).toFixed(2);
     };
 
     Template.checkout.orderTotal = getOrderTotal;
