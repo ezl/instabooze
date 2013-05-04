@@ -61,3 +61,5 @@ body { background: #eee; font-family: Helvetica Neue, Helvetica, Arial, Sans-ser
 
 
 .product .product-details p { margin-top: 5px; }
+
+#footer.footer .total.group > p { line-height: 1; margin-bottom: 0px; }

@@ -142,3 +142,5 @@ input[type="checkbox"] {
 .costs table tr.total { margin-top: 10px; background-color: #bbb; font-weight: bold;}
 
 .stripesecuritynote { color: #666; margin-top: 15px; line-height: 1.25;}
+
+.checker a.redbutton { margin-top: 15px; }
