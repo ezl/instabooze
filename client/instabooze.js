@@ -79,21 +79,21 @@ if (Meteor.isClient) {
     Template.checkout.events({
         'click #verify-age': function(e, t) {
             e.preventDefault();
-            
+
             var $this = $(e.target);
-            
+
             $this.parent().slideUp();
-            
+
             $(".loc-check").slideDown();
-              
+
         },
         'click #verify-loc': function(e, t) {
             e.preventDefault();
-            
+
             var $this = $(e.target);
-            
+
             $this.parent().slideUp();
-            
+
             $("#order-form").slideDown();
 
         },
