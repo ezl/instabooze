@@ -22,10 +22,15 @@
 </template>
 
 <template name="thankyou">
-<div>
-    <p>Thank you</p>
-    <p>Share that shit on facebook for a discount the next time.</p>
-</div>
+    {{> header}}
+    <div class="container" id="fees">
+        <fieldset class="costs fieldset">
+            <h2>Thank You For Your Purchase</h2>
+            <p>We will be sending you an email with a receipt for your purchase shortly.</p>
+            <p>Please make sure you are available and ready with a valid state ID when we come with your order. Without that, we <strong class="red">CAN NOT</strong> leave the package with you.</p>
+        </fieldset>
+        <a class="green button">Tell your friends about InstaBooze on Facebook to help us out NOW!</a>
+    </div>
 </template>
 
 <template name="cart">
