@@ -24,7 +24,7 @@ Meteor.startup(function () {
             },
             {name: "Patron Silver",
              price: "41.95",
-             description: "Tequila. 750 mL.",
+             description: "Premium Tequila. 750 mL.",
              order: 9,
              image: '/images/logos/patron_100x90.png',
             },
