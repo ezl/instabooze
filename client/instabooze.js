@@ -132,7 +132,6 @@ if (Meteor.isClient) {
         var cart = {};
         _.each(getCartItems(), function(item) {
             if (item.qty) {
-                console.log(item);
                 cart[item.item._id] = item.qty;
             };
         });
