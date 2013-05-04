@@ -98,6 +98,8 @@ if (Meteor.isClient) {
 
         },
         'click .stripeButton' : function(){
+            $('#spinner').show().delay(3000).fadeOut()
+
             var token = function(res){
                 var $input = $('<input type=hidden name=stripeToken />').val(res.id);
                 $('form').append($input).submit();

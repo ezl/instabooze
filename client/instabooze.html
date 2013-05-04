@@ -128,6 +128,13 @@
 
     {{> header}}
     
+    <div id="spinner" class="outer-wrapper" style="display:none;"><!-- just an overlay for feedback while stripe loads -->
+        <div class="inner white">
+            <i class="icon-spinner icon-spin icon-2x"></i>
+            <p>Loading Secure Payment Gateway</p>
+        </div>
+    </div><!-- end spinner --> 
+
     <div class="container" id="checkout">
 
         <div class="age-check checker active">
