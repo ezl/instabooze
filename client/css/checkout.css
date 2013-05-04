@@ -145,6 +145,6 @@ input[type="checkbox"] {
 
 .checker a.redbutton { margin-top: 15px; }
 
-#spinner { background-color: rgba(0,0,0,0.5); font-size: 1.5em; height:150%;}
+#spinner { background-color: rgba(0,0,0,0.5); font-size: 1.5em; position:fixed;}
 #spinner p { margin-top: 30px; padding: 0px 15%; line-height: 1.6; font-weight: bold;}
 
