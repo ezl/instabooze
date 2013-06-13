@@ -69,7 +69,7 @@ if (Meteor.isClient) {
         '/cart': 'cart',
         '/checkout': 'checkout',
         '/thankyou': 'thankyou',
-        '/deliveryzones': 'deliveryzones',
+        '/delivery-zone-and-hours': 'delivery-zone-and-hours',
         '/fees': 'fees',
     });
 
