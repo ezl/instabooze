@@ -66,6 +66,7 @@ if (Meteor.isClient) {
 
     Meteor.Router.add({
         '/': 'landing',
+        '/closed': 'closed',
         '/cart': 'cart',
         '/checkout': 'checkout',
         '/thankyou': 'thankyou',
