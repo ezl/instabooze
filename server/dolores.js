@@ -75,7 +75,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
         'Unit          : ' + post.unit,
         'Email         : ' + post.email,
         'Cell Phone    : ' + post.cell,
-        'Any Additional Delivery Instructions:\n' + post.instructions + '\n\n',
+        '\nAny Additional Delivery Instructions:\n' + post.instructions + '\n\n',
         'Order ID      : ' + orderID + '\n',
         'Order Information :' + '\n\n' + orderText,
     ].join('\n');
