@@ -91,7 +91,7 @@ input[type="checkbox"] {
     padding: 10px;
 }
 
-.fieldset input {  
+.fieldset input, .fieldset textarea {  
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #ccc;
@@ -101,7 +101,7 @@ input[type="checkbox"] {
     margin-bottom: 5px;
 }
 
-.fieldset input:focus {
+.fieldset input:focus, .fieldset textarea:focus {
     border: 1px solid darkgreen;
     -webkit-box-shadow: 0 0 3px darkgreen;
     outline: 0;
