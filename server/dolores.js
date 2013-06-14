@@ -23,7 +23,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     if (total_qty > 3)
         deliveryAmount = 10;
 
-    var taxRate = 10.25 / 100;
+    var taxRate = 10.5 / 100;
     cartTotal = subTotal + deliveryAmount;
     var tax = cartTotal * taxRate;
     cartTotal += tax;
@@ -81,7 +81,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     ].join('\n');
 
     var emailBody = [
-        'DELIVERY CONFIRMATION FOR INSTABOOZE,',
+        '==DELIVERY CONFIRMATION FOR INSTABOOZE==',
         '',
         'Howdy,',
         '',
