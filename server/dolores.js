@@ -39,6 +39,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
 
     var stripeChargeAmount = parseInt(cartTotal * 100);
     var stripeSecretKey = 'sk_live_ewB9zfLKSGSoyCNkvKEx7Hf2';
+    // var stripeSecretKey = 'sk_test_YPGedW78FPTG0ovmDJGuvjFu';
 
     var Stripe = StripeAPI(stripeSecretKey);
 
