@@ -46,7 +46,7 @@ textarea{ font-family: Helvetica Neue, Helvetica, Arial, Sans-serif; }
     margin-top: 0px;
 }
 
-.product .product-details { clear: both; text-align: center; margin-top: 10px; }
+.product .product-details { clear: both; text-align: center; margin-top: 5px; }
 
 .order i { display: inline-block; font-size: 3em; margin-top: 5px; float: left; }
 
@@ -58,7 +58,7 @@ textarea{ font-family: Helvetica Neue, Helvetica, Arial, Sans-serif; }
 .order.add { color: forestgreen; }
 .order.add:hover { color: green; }
 
-.product .price-name { display: inline-block;  margin-bottom: 10px; }
+.product .price-name { display: inline-block;  margin-bottom: 5px; }
 
 
 .product .product-details p { margin-top: 5px; }
