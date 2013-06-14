@@ -2,7 +2,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     var post = this.request.body;
     console.log("POST REQUEST:", post);
     var cart = JSON.parse(post.cart);
-    var cartTotal = 0;
+    var subTotal = 0;
     var orderText = "";
     // var stripeToken = JSON.parse(post.stripeToken);
 
@@ -15,20 +15,25 @@ Meteor.Router.add('/checkout', 'POST', function() {
         product = Products.findOne({_id: id});
         qty = cart[id];
         total_qty += cart[id];
-        orderText += qty + '\t' + product.price + '\t' + product.name + '\n';
-        cartTotal += qty * product.price;
+        orderText += qty + '\t' + parseFloat(product.price * qty).toFixed(2) + '\t' + product.name + ' (' + product.price + ')' + '\n';
+        subTotal += qty * product.price;
     });
 
     var deliveryAmount = 5; // getDeliveryAmount() can't be found;
     if (total_qty > 3)
         deliveryAmount = 10;
 
-    var tax = 10.25 / 100;
+    var taxRate = 10.25 / 100;
+    cartTotal = subTotal + deliveryAmount;
+    var tax = cartTotal * taxRate;
+    cartTotal += tax;
 
-    cartTotal += deliveryAmount;
-    cartTotal *= 1 + tax;
-
-    orderText += "Total" + '\t' + parseFloat(cartTotal).toFixed(2);
+    orderText += "--------------------------" + '\n';
+    orderText += "Subtotal" + '\t' + parseFloat(subTotal).toFixed(2) + '\n';
+    orderText += "Delivery" + '\t' + parseFloat(deliveryAmount).toFixed(2) + '\n';
+    orderText += "Tax" + '\t' + parseFloat(tax).toFixed(2) + '\n';
+    orderText += "==========================" + '\n';
+    orderText += "Total" + '\t' + parseFloat(cartTotal).toFixed(2) + '\n';
 
     // Form validation -- need a valid email address and phone number.
 
@@ -43,11 +48,14 @@ Meteor.Router.add('/checkout', 'POST', function() {
     // is there a valid stripe token? if not, kick out.
     // is the email address valid? if not, kick out.
     // in the front end, ensure that there is an address, the email and phone number are valid
+
+    var orderID = Date.now() + post.email;
+
     console.log(" *** Before charging stripe");
     Stripe.charges.create({
         amount: stripeChargeAmount,
         currency: "USD",
-        description: "this is a test description",
+        description: orderID,
         card: {
             number: "4242424242424242",
             exp_month: "03",
@@ -67,11 +75,14 @@ Meteor.Router.add('/checkout', 'POST', function() {
         'Unit          : ' + post.unit,
         'Email         : ' + post.email,
         'Cell Phone    : ' + post.cell,
-        'Instructions  : ' + post.instructions + '\n',
-        'Order Informaion : ' + '\n\n' + orderText,
+        'Any Additional Delivery Instructions:\n' + post.instructions + '\n\n',
+        'Order ID      : ' + orderID + '\n',
+        'Order Information :' + '\n\n' + orderText,
     ].join('\n');
 
     var emailBody = [
+        'DELIVERY CONFIRMATION FOR INSTABOOZE,',
+        '',
         'Howdy,',
         '',
         'Your InstaBooze order was processed without a hitch! Someone should be there with your order in about 45 minutes.',
@@ -86,16 +97,20 @@ Meteor.Router.add('/checkout', 'POST', function() {
     ].join('\n');
 
     var fromField = "instabooze@instabooze.net";
-    var toField = ["eric@instabooze.net", "chromano@gmail.com", post.email];
+    var recipients = ["eric@instabooze.net", "chromano@gmail.com", post.email];
 
-    // process.env.MAIL_URL = "smtp://localhost/";
-    Email.send({
-        to: toField,
-        from: fromField,
-        subject: "Instabooze order confirmation",
-        text: emailBody,
+
+    recipients.forEach(function(recipient) {
+        console.log("sending an email to: " + recipient);
+        // process.env.MAIL_URL = "smtp://localhost/";
+        Email.send({
+            to: recipient,
+            from: fromField,
+            subject: "Instabooze order confirmation",
+            text: emailBody,
+        });
+        //console.log(deliveryInformation);
     });
-    //console.log(deliveryInformation);
 
     return [302, {"Location": "/thankyou"}, "/thankyou"];
 });
