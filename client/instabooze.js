@@ -2,6 +2,7 @@ Products = new Meteor.Collection("products");
 Orders = new Meteor.Collection("orders");
 
 Meteor.startup(function() {
+    Session.set('openforbusiness', true);
     cart = {}
     Meteor.subscribe('products', function () {
         Products.find().forEach(function(product) {
@@ -65,10 +66,32 @@ Meteor.startup(function() {
 if (Meteor.isClient) {
 
     Meteor.Router.add({
-        '/': 'landing',
+        '/': function() {
+            if (Session.get('openforbusiness')) {
+                return 'landing';
+            } else {
+                return 'closed';
+            }
+        },
+
+        'cart': function() {
+            if (Session.get('openforbusiness')) {
+                return 'cart';
+            } else {
+                return 'closed';
+            }
+        },
+
+        'checkout': function() {
+            if (Session.get('openforbusiness')) {
+                return 'checkout';
+            } else {
+                return 'closed';
+            }
+        },
+
         '/closed': 'closed',
-        '/cart': 'cart',
-        '/checkout': 'checkout',
+
         '/thankyou': 'thankyou',
         '/delivery-zone-and-hours': 'delivery-zone-and-hours',
         '/fees': 'fees',
