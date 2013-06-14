@@ -83,29 +83,40 @@ Meteor.startup(function() {
 if (Meteor.isClient) {
 
     Meteor.Router.add({
-        '/': function() {
-            if (Session.get('openforbusiness')) {
-                return 'landing';
-            } else {
-                return 'closed';
+        '/': {
+            as: 'landing',
+            to: function() {
+                if (Session.get('openforbusiness')) {
+                    return 'landing';
+                } else {
+                    return 'closed';
+                }
             }
         },
 
-        'cart': function() {
-            if (Session.get('openforbusiness')) {
-                return 'cart';
-            } else {
-                return 'closed';
+
+        '/cart': {
+            as: 'cart',
+            to: function() {
+                if (Session.get('openforbusiness')) {
+                    return 'cart';
+                } else {
+                    return 'closed';
+                }
             }
         },
 
-        'checkout': function() {
-            if (Session.get('openforbusiness')) {
-                return 'checkout';
-            } else {
-                return 'closed';
+        '/checkout': {
+            as: 'checkout',
+            to: function() {
+                if (Session.get('openforbusiness')) {
+                    return 'checkout';
+                } else {
+                    return 'closed';
+                }
             }
         },
+        
 
         '/closed': 'closed',
 
