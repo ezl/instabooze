@@ -1,9 +1,10 @@
 Meteor.Router.add('/checkout', 'POST', function() {
     var post = this.request.body;
-    // console.log("POST REQUEST:", post);
+    console.log("POST REQUEST:", post);
     var cart = JSON.parse(post.cart);
     var cartTotal = 0;
     var orderText = "";
+    // var stripeToken = JSON.parse(post.stripeToken);
 
     //
     // Make sure the total value is correctly calculated.  Avoid possible
@@ -32,12 +33,30 @@ Meteor.Router.add('/checkout', 'POST', function() {
     // Form validation -- need a valid email address and phone number.
 
     var stripeChargeAmount = parseInt(cartTotal * 100);
+    var stripeSecretKey = 'sk_test_YPGedW78FPTG0ovmDJGuvjFu';
+
+    var Stripe = StripeAPI(stripeSecretKey);
+
     //console.log(stripeChargeAmount);
     // We need to actually charge the card on stripe...
 
     // is there a valid stripe token? if not, kick out.
     // is the email address valid? if not, kick out.
     // in the front end, ensure that there is an address, the email and phone number are valid
+    console.log(" *** Before charging stripe");
+    Stripe.charges.create({
+        amount: stripeChargeAmount,
+        currency: "USD",
+        description: "this is a test description",
+        card: {
+            number: "4242424242424242",
+            exp_month: "03",
+            exp_year: "2014"
+        }
+    }, function (err, res) {
+        console.log(err, res);
+    });
+    console.log(" *** After charging stripe");
 
     // customer.io? or something to ask them the next day to rate experience and share?
 

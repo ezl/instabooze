@@ -123,7 +123,9 @@ if (Meteor.isClient) {
 
     Template.checkout.taxCost = function() {
         var taxRate = 0.1025;
-        var taxAmount = (Template.checkout.subtotal() + Template.checkout.deliveryCost()) * taxRate;
+        var subtotal = Template.checkout.subtotal();
+        var deliveryCost = Template.checkout.deliveryCost();
+        var taxAmount = (parseFloat(subtotal) + deliveryCost) * taxRate;
         return parseFloat(Math.round(taxAmount * 100) / 100).toFixed(2);
     };
 
@@ -190,8 +192,9 @@ if (Meteor.isClient) {
                 $('form').append($input).submit();
             };
 
+            // http://stackoverflow.com/questions/16198480/using-stripe-payment-form-in-meteor
             StripeCheckout.open({
-                key:         'pk_loOkfFjY7S9v0FNnphUKIHKHXhkz8',
+                key:         'pk_test_EhEkcAl2o9ccwevq8I1Mx4Ft',
                 // address:     true,
                 amount:      Math.round(getOrderTotal() * 100),
                 name:        'InstaBooze',
