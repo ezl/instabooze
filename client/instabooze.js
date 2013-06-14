@@ -1,8 +1,25 @@
 Products = new Meteor.Collection("products");
 Orders = new Meteor.Collection("orders");
 
+var siteIsOpen = function() {
+    var openDays = ["Thursday", "Friday", "Saturday"];
+    var openHours = [12,13,14,15,16,17,18,19,20,21,22];
+    var todaysDayName = Date.today().getDayName();
+    if (_.indexOf(openDays, todaysDayName) == -1) {
+        return false;
+    }
+
+    // OK, boozefiend, you passed the day test.  lets see if the hours are good...
+    var d = new Date();
+    var hour = d.getHours();
+    if (_.indexOf(openHours, hour) == -1) {
+        return false;
+    }
+    return true;
+}
+
 Meteor.startup(function() {
-    Session.set('openforbusiness', true);
+    Session.set('openforbusiness', siteIsOpen());
     cart = {}
     Meteor.subscribe('products', function () {
         Products.find().forEach(function(product) {
