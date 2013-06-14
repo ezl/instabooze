@@ -4,7 +4,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     var cart = JSON.parse(post.cart);
     var subTotal = 0;
     var orderText = "";
-    // var stripeToken = JSON.parse(post.stripeToken);
+    var stripeToken = post.stripeToken;
 
     //
     // Make sure the total value is correctly calculated.  Avoid possible
@@ -57,11 +57,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
         amount: stripeChargeAmount,
         currency: "USD",
         description: orderID + post.email,
-        card: {
-            number: "4242424242424242",
-            exp_month: "03",
-            exp_year: "2014"
-        }
+        card: stripeToken,
     }, function (err, res) {
         console.log(err, res);
     });
