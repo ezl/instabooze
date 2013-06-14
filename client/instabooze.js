@@ -245,7 +245,7 @@ if (Meteor.isClient) {
 
             // http://stackoverflow.com/questions/16198480/using-stripe-payment-form-in-meteor
             StripeCheckout.open({
-                key:         'pk_test_EhEkcAl2o9ccwevq8I1Mx4Ft',
+                key:         'pk_live_Jd7gUj9oEVcEAaNobds40dxq',
                 // address:     true,
                 amount:      Math.round(getOrderTotal() * 100),
                 name:        'InstaBooze',

@@ -38,7 +38,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     // Form validation -- need a valid email address and phone number.
 
     var stripeChargeAmount = parseInt(cartTotal * 100);
-    var stripeSecretKey = 'sk_test_YPGedW78FPTG0ovmDJGuvjFu';
+    var stripeSecretKey = 'sk_live_ewB9zfLKSGSoyCNkvKEx7Hf2';
 
     var Stripe = StripeAPI(stripeSecretKey);
 
