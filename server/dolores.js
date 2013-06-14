@@ -97,8 +97,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     ].join('\n');
 
     var fromField = "instabooze@instabooze.net";
-    var recipients = ["eric@instabooze.net", "chromano@gmail.com", post.email];
-
+    var recipients = ["orders@instabooze.net", post.email];
 
     recipients.forEach(function(recipient) {
         console.log("sending an email to: " + recipient);
