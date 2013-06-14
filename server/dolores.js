@@ -50,7 +50,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     // is the email address valid? if not, kick out.
     // in the front end, ensure that there is an address, the email and phone number are valid
 
-    var orderID = Date.now() + post.email;
+    var orderID = Date.now();
 
     console.log(" *** Before charging stripe");
     Stripe.charges.create({
