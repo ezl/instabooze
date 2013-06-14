@@ -173,7 +173,7 @@ if (Meteor.isClient) {
     };
 
     Template.checkout.taxCost = function() {
-        var taxRate = 0.1025;
+        var taxRate = 0.1050;
         var subtotal = Template.checkout.subtotal();
         var deliveryCost = Template.checkout.deliveryCost();
         var taxAmount = (parseFloat(subtotal) + deliveryCost) * taxRate;
