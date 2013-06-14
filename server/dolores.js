@@ -55,7 +55,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     Stripe.charges.create({
         amount: stripeChargeAmount,
         currency: "USD",
-        description: orderID,
+        description: orderID + post.email,
         card: {
             number: "4242424242424242",
             exp_month: "03",
