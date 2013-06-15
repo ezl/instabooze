@@ -282,7 +282,7 @@ if (Meteor.isClient) {
 
         },
         'click .stripeButton' : function(){
-            var errmsg = "Please provide correct information for the form below";
+            var errmsg = "Sorry, it looks like you're missing some required fields... We need these to make sure you get your order!";
             $("#delivery-data-fieldset input").removeClass("error");
             if ($("#delivery-data-fieldset input").filter(function() {
                 if ($(this).attr("data-optional") == "true")
@@ -295,7 +295,7 @@ if (Meteor.isClient) {
                     }
                 } else if ($(this).attr("type") == "email" && $(this).val()) {
                     if (!/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/.test($(this).val())) {
-                        errmsg = "This email address doesn't seem valid";
+                        errmsg = "Hmmm.. are you sure that's a real email address?";
                         $(this).addClass("error");
                         return true;
                     }
