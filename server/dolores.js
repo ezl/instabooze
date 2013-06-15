@@ -1,7 +1,7 @@
 
-Meteor.startup(function () {
-    process.env.MAIL_URL = 'smtp://postmaster%40instabooze.mailgun.org:IlikeTurtles1@smtp.mailgun.org:587';}
-);
+//Meteor.startup(function () {
+//    process.env.MAIL_URL = 'smtp://postmaster%40instabooze.mailgun.org:74tx-qn8b1a4@smtp.mailgun.org:587';}
+//);
 
 Meteor.Router.add('/checkout', 'POST', function() {
     var post = this.request.body;
