@@ -7,9 +7,28 @@
 </head>
 
 <body>
+    {{>ctTop}}
     {{> googleAnalytics}}
     {{renderPage}}
+    {{>ctBottom}}
 </body>
+
+<template name="ctTop">
+  <script type="text/javascript">
+    var WRInitTime=(new Date()).getTime();
+  </script>
+</template>
+
+<template name="ctBottom">
+  <div id="ClickTaleDiv" style="display: none;"></div>
+  <script type="text/javascript">
+    if(document.location.protocol!='https:')
+      document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRe0.js'%20type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    if(typeof ClickTale=='function') ClickTale(9314,1,"www08");
+  </script>
+</template>
 
 <!-- ####### Cart and Checkout Pages  ####### -->
 <!-- ####### Cart and Checkout Pages  ####### -->
