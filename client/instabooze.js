@@ -1,5 +1,5 @@
-Products = new Meteor.Collection("products");
-Orders = new Meteor.Collection("orders");
+Meteor.subscribe("products");
+Meteor.subscribe("orders");
 
 var siteIsOpen = function() {
     var openDays = ["Thursday", "Saturday"];

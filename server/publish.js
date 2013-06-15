@@ -1,5 +1,8 @@
-Products = new Meteor.Collection("products");
-
 Meteor.publish('products', function () {
   return Products.find();
 });
+
+Meteor.publish('orders', function () {
+  return Orders.find();
+});
+
