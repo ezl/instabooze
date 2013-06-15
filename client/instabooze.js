@@ -236,6 +236,37 @@ if (Meteor.isClient) {
 
         },
         'click .stripeButton' : function(){
+            var errmsg = "Please provide correct information for the form below";
+            $("#delivery-data-fieldset input").removeClass("error");
+            if ($("#delivery-data-fieldset input").filter(function() {
+                if ($(this).attr("data-optional") == "true")
+                    return false;
+                if ($(this).attr("type") == "tel" && $(this).val()) {
+                    if (!/^(?:\(\d{3}\)|\d{3})(?: *- *)?\d{3}(?: *- *)?\d{4}$/.test($(this).val())) {
+                        errmsg = "Cell phone number must be in the format XXX-XXX-XXXX";
+                        $(this).addClass("error");
+                        return true;
+                    }
+                } else if ($(this).attr("type") == "email" && $(this).val()) {
+                    if (!/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/.test($(this).val())) {
+                        errmsg = "This email address doesn't seem valid";
+                        $(this).addClass("error");
+                        return true;
+                    }
+                }
+
+                if ($(this).val() == "") {
+                    $(this).addClass("error");
+                    return true;
+                } else {
+                    return false;
+                }
+            }).length) {
+                $("html,body").animate({scrollTop: 0});
+                $("#delivery-data-fieldset p.alert").text(errmsg).slideDown();
+                return false;
+            }
+
             $('#spinner').show().delay(3000).fadeOut()
 
             var token = function(res){

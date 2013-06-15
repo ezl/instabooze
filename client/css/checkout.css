@@ -148,3 +148,4 @@ input[type="checkbox"] {
 #spinner { background-color: rgba(0,0,0,0.5); font-size: 1.5em; position:fixed;}
 #spinner p { margin-top: 30px; padding: 0px 15%; line-height: 1.6; font-weight: bold;}
 
+input.error { border: solid red 1px; }

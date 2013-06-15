@@ -82,11 +82,12 @@
         </div> <!-- end .loc-check -->
 
         <form id="order-form" action="" method="POST">
-            <fieldset class="where fieldset">
+            <fieldset id="delivery-data-fieldset" class="where fieldset">
                 <h2>Where Should We Bring Your Order?</h2>
+                <p class="alert" style="color:red;display:none;"></p>
                 <input type="text" placeholder="Name" name="name"></input>
                 <input type="text" placeholder="Address" name="address"></input>
-                <input type="text" placeholder="Unit #, if any" name="unit"></input>
+                <input type="text" data-optional="true" placeholder="Unit #, if any" name="unit"></input>
                 <input type="email" placeholder="Email" name="email"></input>
                 <input type="tel" placeholder="Cell Phone Number" name="cell"></input>
                 <textarea rows="3" placeholder="Any delivery instructions, like how to find you once we get there" name="instructions"></textarea>
@@ -138,7 +139,7 @@
                 </table>
             </fieldset>
 
-            <a href="" id="place-order" class="green button stripeButton">
+            <button id="place-order" class="green button stripeButton" style="display:block;width:100%;">
                 <i class="ss-icon ss-symbolicons-block ss-lock"></i> Pay Securely With Credit Card<br><br>
                 <p>
 
@@ -149,7 +150,7 @@
                     <img src="/images/creditcards/diners_club_32.png" />
                     <img src="/images/creditcards/jcb_32.png" />
                 </p>
-            </a>
+            </button>
 
             <p class="stripesecuritynote">InstaBooze uses <a href="https://www.stripe.com/">Stripe</a>, a 3rd party payment processor for securely processing payments, because your information security is very important to us.</p>
             <p class="stripesecuritynote">Stripe handles online credit card payments for thousands of businesses and organizations, including Fortune 500 companies.</p>
