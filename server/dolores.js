@@ -1,3 +1,8 @@
+
+//Meteor.startup(function () {
+//    process.env.MAIL_URL = 'smtp://postmaster%40instabooze.mailgun.org:74tx-qn8b1a4@smtp.mailgun.org:587';}
+//);
+
 Meteor.Router.add('/checkout', 'POST', function() {
     var post = this.request.body;
     console.log("POST REQUEST:", post);
@@ -50,7 +55,7 @@ Meteor.Router.add('/checkout', 'POST', function() {
     // is the email address valid? if not, kick out.
     // in the front end, ensure that there is an address, the email and phone number are valid
 
-    var orderID = Date.now() + post.email;
+    var orderID = Date.now();
 
     console.log(" *** Before charging stripe");
     Stripe.charges.create({

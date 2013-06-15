@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    {{> googleAnalytics}}
     {{renderPage}}
 </body>
 
@@ -165,6 +166,9 @@
 <!-- ####### Helper Components ####### -->
 <!-- ####### Helper Components ####### -->
 
+<template name="googleAnalytics">
+</template>
+
 <template name="title">
 
     <h1 class="ib-brand"><a href="{{cartPath}}">insta<span class="red">booze</span>.net</a></h1>
@@ -218,6 +222,20 @@
 <!-- ####### Static Pages  ####### -->
 
 <template name="closed">
+
+    <div class="outer-wrapper" id="landing">
+
+        <div class="inner">
+            {{>title}}
+            <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
+            <a href="{{delivery-zone-and-hoursPath}}" class="green button">Launching at Noon on Saturday June 15<br><br>View Our Delivery Zone</a>
+        </div>
+
+    </div>
+
+</template>
+
+<template name="closed-postlaunch">
 
     <div class="outer-wrapper" id="landing">
 
@@ -347,19 +365,19 @@
                 <table>
                     <tr>
                         <th>Thursday</th>
-                        <td>Noon-Midnight</td>
+                        <td>Noon-11pm</td>
                     </tr>
                     <tr>
                         <th>Friday</th>
-                        <td>Noon-Midnight</td>
+                        <td>Noon-11pm</td>
                     </tr>
                     <tr>
                         <th>Saturday</th>
-                        <td>Noon-Midnight</td>
+                        <td>Noon-11pm</td>
                     </tr>
                     <tr>
                         <th>Sunday</th>
-                        <td>Noon-Midnight</td>
+                        <td>Noon-7pm</td>
                     </tr>
                     <tr>
                         <th>Monday-Wednesday</th>
