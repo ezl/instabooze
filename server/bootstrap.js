@@ -1,5 +1,3 @@
-// Products = new Meteor.Collection("products");
-
 // if the database is empty on server start, create some sample data.
 Meteor.startup(function () {
     if (Products.find().count() === 0) {

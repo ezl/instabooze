@@ -5,4 +5,3 @@ Meteor.publish('products', function () {
 Meteor.publish('orders', function () {
   return Orders.find();
 });
-
