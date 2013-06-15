@@ -1,0 +1,55 @@
+#fail-whale { 
+  width: 100%; 
+  text-align: center;
+  padding: 20px;
+}
+
+#fail-whale .ib-brand {
+  background: #000;
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;  
+}
+
+#fail-whale .fail-image {
+  width: 50%;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+#fail-whale img {  
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+#fail-whale h4 {
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 1.4em;
+}
+
+#fail-signup-form label { 
+  display: block;
+  text-align: center;
+}
+
+
+#fail-signup-form input[type="email"] { 
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 2px 2px #eee;
+  -moz-box-shadow: inset 0 2px 2px #eee;
+  box-shadow: inset 0 2px 2px #eee;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 1em;
+  text-align: center;
+  margin: 10px 0;
+}

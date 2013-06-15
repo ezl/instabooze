@@ -12,7 +12,6 @@ p {
 @media screen and (min-width: 481px) {
     body, .fixed-bar {
         max-width: 480px;
-        border: 1px solid #999;
     }
 }
 

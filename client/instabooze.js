@@ -140,6 +140,7 @@ if (Meteor.isClient) {
         '/thankyou': 'thankyou',
         '/delivery-zone-and-hours': 'delivery-zone-and-hours',
         '/fees': 'fees',
+        '/failwhale': 'failwhale'
     });
 
     Template.header.page = function() {

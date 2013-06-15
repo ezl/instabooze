@@ -281,11 +281,11 @@
 
         <p style="text-align:center;">Tell your friends about InstaBooze to help us out:</p>
         <p style="text-align:center;">
-            <a style="margin-right:20px;" href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://instabooze.net&p[title]=Instabooze.net!&p[summary]=Alcohol delivery in 45 minutes? YES PLEASE! Instabooze.net is delivering in Lakeview! #awesome""><img src="/images/ico-fb.png" style="width:100px;"/></a>
+            <a style="margin-right:20px;" href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://instabooze.net&p[title]=Instabooze.net!&p[summary]=Alcohol delivery in 45 minutes? YES PLEASE! Instabooze.net is delivering in Lakeview! #awesome"><img src="/images/ico-fb.png" style="width:100px;"/></a>
             <a href="http://twitter.com/home?status=Alcohol delivery in 45 minutes? YES PLEASE! Instabooze.net is delivering in Lakeview! #awesome"><img src="/images/ico-tw.png" style="width:100px;"/></a>
         </p>
 
-    </div><!-- end #fees -->
+    </div> <!-- end #fees -->
 
 </template>
 
@@ -393,3 +393,30 @@
 
 </template>
 
+<template name="failwhale">
+  
+  <div id="fail-whale">
+    
+    {{> title}}
+    
+    <h4>Gulp! <a href="http://instabooze.net">instabooze.net</a> had a little too much to drink and is over capacity. We remember our first beer, too.</h4>
+    
+    <div class="fail-image">
+      <img src="images/robin.jpg" alt="Holy strawberries Batman! We're in a jam." />
+    </div> <!-- end .fail-image -->
+    
+    <div class="fail-signup">
+      
+      <p>In the meantime, <strong>sign up to receive special offers</strong>:</p>
+      
+      <form action="#" id="fail-signup-form">
+        <label for="fail-email">What's a good email address?</label>
+        <input type="email" id="fail-signup-email" name="fail-email" placeholder="Type your email here." />
+        <input type="submit" id="fail-signup-button" value="Signup for Special Offers" />
+      </form>
+      
+    </div> <!-- end .fail-signup -->
+    
+  </div> <!-- end #fail-whale -->
+    
+</template>
