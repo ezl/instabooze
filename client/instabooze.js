@@ -223,9 +223,38 @@ if (Meteor.isClient) {
         }
     });
 
+    var recordPageWithClickTale = function() {
+        var clicktaleTopPartString = [
+            '<script type="text/javascript">',
+            'var WRInitTime=(new Date()).getTime();',
+            '</script>'
+            ].join('');
+        var clicktaleBottomPartString = [
+            '<div id="ClickTaleDiv" style="display: none;"></div>',
+            '<script type="text/javascript">',
+            "if(document.location.protocol!='https:')",
+            'document.write(unescape("',
+            "%3Cscript%20src='http://s.clicktale.net/WRe0.js'%20type='text/javascript'%3E%3C/script%3E",
+            '"));',
+            '</script>',
+            '<script type="text/javascript">',
+            'if(typeof ClickTale=="function") ClickTale(9314,0.5,"www08");',
+            '</script>'
+            ].join('');
+        var clicktaleTopPart = $(clicktaleTopPartString);
+        var clicktaleBottomPart = $(clicktaleBottomPartString);
+        //$("body").prepend(clicktaleTopPart);
+        //$("body").append(clicktaleBottomPart);
+    };
+
+    Template.cart.rendered = function() {
+        recordPageWithClickTale();
+    };
+
     Template.checkout.rendered = function() {
         var stripeLibraries = $('<script src="https://checkout.stripe.com/v2/checkout.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>');
         $("body").append(stripeLibraries);
+        recordPageWithClickTale();
     };
 
     Template.checkout.events({
