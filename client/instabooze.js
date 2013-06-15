@@ -2,7 +2,7 @@ Products = new Meteor.Collection("products");
 Orders = new Meteor.Collection("orders");
 
 var siteIsOpen = function() {
-    var openDays = ["Thursday", "Friday", "Saturday"];
+    var openDays = ["Thursday", "Saturday"];
     var openHours = [12,13,14,15,16,17,18,19,20,21,22];
     var todaysDayName = Date.today().getDayName();
     if (_.indexOf(openDays, todaysDayName) == -1) {
