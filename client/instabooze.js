@@ -96,6 +96,9 @@ GA = function(code) {
 };
 
 if (Meteor.isClient) {
+    if (navigator.userAgent.match('CriOS')) {
+        alert("Sorry, Chrome on Apple iOS devices isn't supported.  Please use Safari.  (Our payment processor doesn't support it, so we wouldn't be able to take a payment from you.)");
+    }
 
     Meteor.Router.add({
         '/': {
