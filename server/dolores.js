@@ -1,3 +1,8 @@
+
+Meteor.startup(function () {
+    process.env.MAIL_URL = 'smtp://postmaster%40instabooze.mailgun.org:IlikeTurtles1@smtp.mailgun.org:587';}
+);
+
 Meteor.Router.add('/checkout', 'POST', function() {
     var post = this.request.body;
     console.log("POST REQUEST:", post);
