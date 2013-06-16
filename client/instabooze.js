@@ -130,7 +130,7 @@ if (Meteor.isClient) {
                 if (Session.get('openforbusiness')) {
                     return 'checkout';
                 } else {
-                    return 'checkout'; // closed
+                    return 'closed'; // closed
                 }
             }
         },
