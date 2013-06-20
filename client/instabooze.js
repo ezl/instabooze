@@ -2,6 +2,7 @@ Meteor.subscribe("products");
 Meteor.subscribe("orders");
 
 var siteIsOpen = function() {
+    return false;
     var openDays = ["Thursday", "Friday", "Saturday", "Sunday"];
     var openHours = [11,12,13,14,15,16,17,18,19,20,21,22];
     var todaysDayName = Date.today().getDayName();
@@ -119,7 +120,7 @@ if (Meteor.isClient) {
                 if (Session.get('openforbusiness')) {
                     return 'cart';
                 } else {
-                    return 'cart'; // closed
+                    return 'closed'; // closed
                 }
             }
         },
