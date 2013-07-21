@@ -97,15 +97,32 @@ GA = function(code) {
 };
 
 if (Meteor.isClient) {
-    if (navigator.userAgent.match('CriOS')) {
-        alert("Sorry, Chrome on Apple iOS devices isn't supported.  Please use Safari.  (Our payment processor doesn't support it, so we wouldn't be able to take a payment from you.)");
-    }
+    // if (navigator.userAgent.match('CriOS')) {
+    //     alert("Sorry, Chrome on Apple iOS devices isn't supported.  Please use Safari.  (Our payment processor doesn't support it, so we wouldn't be able to take a payment from you.)");
+    // }
 
     Meteor.Router.add({
         '/': {
             as: 'landing',
             to: function() {
                 if (Session.get('openforbusiness')) {
+
+                    var routeByUserAgent = true; // how to do this for testing locally without being annoying?
+
+                    if (routeByUserAgent) {
+                        if ( navigator.userAgent.match('CriOS') // Blocks iOS Chrome
+                            && !window.navigator.standalone ) {
+                                return 'crios'; // the chrome on ios renders too long!
+                        }
+
+                        if ( navigator.userAgent.match(/iPhone/i) 
+                            && !navigator.userAgent.match('CriOS') // Blocks iOS Chrome
+                            && !window.navigator.standalone ) {
+                                return 'safari';
+                        }
+                    }
+
+
                     return 'landing';
                 } else {
                     return 'closed';
