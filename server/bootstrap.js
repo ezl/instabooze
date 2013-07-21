@@ -62,6 +62,12 @@ Meteor.startup(function () {
              order: 10,
              image: '/images/logos/water_100x90.png',
             },
+            {name: "Manhattan Project Medium Sandwich",
+             price: "6.00",
+             description: "Roast Beef, Ham, Turkey, American cheese, Lettuce and tomato, Mustard or Mayo.",
+             order: 11,
+             image: '/images/logos/manhattan-project_100x90.png',
+            },
         ];
 
         for (var i = 0; i < data.length; i++) {
