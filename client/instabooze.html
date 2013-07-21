@@ -1,9 +1,9 @@
 <head>
-  <title>Liquor Store Online -- Alcohol Delivery | instabooze</title>
+  <title>Insta Booze</title>
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+  <link rel="apple-touch-icon-precomposed" href="/images/ios_icon.png">
 </head>
 
 <body>
@@ -240,6 +240,130 @@
 <!-- ####### Static Pages  ####### -->
 <!-- ####### Static Pages  ####### -->
 
+<template name="safari">
+            <style>
+                body {
+                  background-color: #666;
+                  text-align: center;
+                  color: white;
+                  text-shadow: 1px 1px 0px rgba(0,0,0,0.7);
+                  background: url(bo_play_pattern/bo_play_pattern.png);
+                }
+                h1 {
+                  margin-top:30px;
+                  font-size: 1.6em;
+                  line-height: 1.4;
+                  margin-bottom: 40px;
+                }
+                h2 {
+                  line-height: 1.4;
+                }
+
+                .ib-brand {
+                  text-decoration: none;
+                  font-family: 'museo500';
+                }
+                footer {
+                  position: absolute;
+                  bottom: 0;
+                  width: 100%;
+                  padding: 20px;
+                }
+                h1, h2, img#cup {
+                  padding-left: 15px;
+                  padding-right: 15px;
+                }
+                img#cup {
+                  padding-top:20px;
+                  padding-bottom:20px;
+                }
+            </style>
+
+            <h1>Install <span class="ib-brand">insta<span class="red">booze</span>.net</span></h1>
+            <h2>Your Favorite Alcohol Delivered To You In 45 Minutes</h2>
+            <img id="cup" src='images/red-solo-cup-small.png' />
+            <footer>
+                <p>Tap the icon below to "<strong><em>Add to Home Screen</em></strong>"</p>
+                <i class="icon-arrow-down"></i>
+            </footer>
+        </div>
+
+</template>
+
+<template name="crios">
+            <style>
+                body {
+                  background-color: #666;
+                  text-align: center;
+                  color: white;
+                  text-shadow: 1px 1px 0px rgba(0,0,0,0.7);
+                  background: url(bo_play_pattern/bo_play_pattern.png);
+                }
+                h1 {
+                  margin-top:30px;
+                  font-size: 1.6em;
+                  line-height: 1.4;
+                  margin-bottom: 40px;
+                }
+                h2 {
+                  line-height: 1.4;
+                }
+
+                .ib-brand {
+                  text-decoration: none;
+                  font-family: 'museo500';
+                }
+                footer {
+                  position: absolute;
+                  bottom: 0;
+                  width: 100%;
+                  padding: 20px;
+                }
+                h1, h2, img#cup {
+                  padding-left: 15px;
+                  padding-right: 15px;
+                }
+                img#cup {
+                  padding-top:20px;
+                  padding-bottom:20px;
+                }
+            </style>
+
+            <h1>Install <span class="ib-brand">insta<span class="red">booze</span>.net</span></h1>
+            <h2>Your Favorite Alcohol Delivered To You In 45 Minutes</h2>
+            <img id="cup" src='images/red-solo-cup-small.png' />
+            <footer>
+                <p>To use InstaBooze, open www.instabooze.net in Safari and <em><strong>"Add to Home Screen"</strong></em>.</p>
+            </footer>
+        </div>
+
+</template>
+
+<template name="ios-mobile-loading">
+<style>
+                body {
+                  background-color: #666;
+                  text-align: center;
+                  color: white;
+                  text-shadow: 1px 1px 0px rgba(0,0,0,0.7);
+                  background: url(bo_play_pattern/bo_play_pattern.png);
+                }
+                h1 {
+                  margin-top:150px;
+                  font-size: 1.6em;
+                  line-height: 1.4;
+                  margin-bottom: 20px;
+                }
+                .ib-brand {
+                  text-decoration: none;
+                  font-family: 'museo500';
+                }
+</style>
+<h1><span class="ib-brand">loading insta<span class="red">booze</span>.net</span></h1>
+<i class="icon-spinner icon-spin icon-2x"></i>
+</template>
+
+
 <template name="pre-launch-closed">
 
     <div class="outer-wrapper" id="landing">
@@ -262,7 +386,7 @@
             {{>title}}
             <h2>Your Favorite Booze Delivered To You In 45 Minutes</h2>
             <a class="redbutton button" href="{{delivery-zone-and-hoursPath}}">
-                Sorry, We'll be back soon<br><br>
+                Sorry, We're Temporarily Closed.<br>We'll be back soon!
             </a>
         </div>
 
