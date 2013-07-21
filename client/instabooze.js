@@ -2,8 +2,7 @@ Meteor.subscribe("products");
 Meteor.subscribe("orders");
 
 var siteIsOpen = function() {
-    return true;
-    var openDays = ["Thursday", "Friday", "Saturday", "Sunday"];
+    var openDays = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     var openHours = [11,12,13,14,15,16,17,18,19,20,21,22];
     var todaysDayName = Date.today().getDayName();
     if (_.indexOf(openDays, todaysDayName) == -1) {
