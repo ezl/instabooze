@@ -104,28 +104,27 @@ if (Meteor.isClient) {
         '/': {
             as: 'landing',
             to: function() {
-                if (Session.get('openforbusiness')) {
+                var routeByUserAgent = true; // how to do this for testing locally without being annoying?
 
-                    var routeByUserAgent = true; // how to do this for testing locally without being annoying?
-
-                    if (routeByUserAgent) {
-                        if ( navigator.userAgent.match('CriOS') // Blocks iOS Chrome
-                            && !window.navigator.standalone ) {
-                                return 'crios'; // the chrome on ios renders too long!
-                        }
-
-                        if ( navigator.userAgent.match(/iPhone/i) 
-                            && !navigator.userAgent.match('CriOS') // Blocks iOS Chrome
-                            && !window.navigator.standalone ) {
-                                return 'safari';
-                        }
+                if (routeByUserAgent) {
+                    if ( navigator.userAgent.match('CriOS') // Blocks iOS Chrome
+                        && !window.navigator.standalone ) {
+                            return 'crios'; // the chrome on ios renders too long!
                     }
 
+                    if ( navigator.userAgent.match(/iPhone/i) 
+                        && !navigator.userAgent.match('CriOS') // Blocks iOS Chrome
+                        && !window.navigator.standalone ) {
+                            return 'safari';
+                    }
+                }
 
+                if (Session.get('openforbusiness')) {
                     return 'landing';
                 } else {
                     return 'closed';
                 }
+
             }
         },
 
