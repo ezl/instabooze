@@ -164,6 +164,30 @@
                 </table>
             </fieldset>
 
+            <fieldset id="cc-form" class="costs fieldset">
+                <p class="alert" style="color:red;display:none;"></p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Card #</th>
+                            <td><input type="text" size="20" data-stripe="number"/></td>
+                        </tr>
+                        <tr>
+                            <th>CVC</th>
+                            <td><input type="text" size="4" data-stripe="cvc"/></td>
+                        </tr>
+                        <tr>
+                            <th style="vertical-align:middle;">Expiration <span style="font-size:0.8em;">(MM/YYYY)</span></th>
+                            <td>
+                                <input type="text" size="2" data-stripe="exp-month" style="width:60px;float:left;"/>
+                                <span style="float:left;width:20px;text-align:center;font-size:1.2em;margin-top:15px;">/</span>
+                                <input type="text" size="4" data-stripe="exp-year" style="float:left;width:120px;"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
             <button id="place-order" class="green button stripeButton" style="display:block;width:100%;">
                 <i class="ss-icon ss-symbolicons-block ss-lock"></i> Pay Securely With Credit Card<br><br>
                 <p>

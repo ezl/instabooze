@@ -333,25 +333,27 @@ if (Meteor.isClient) {
                 return false;
             }
 
-            $('#spinner').show().delay(3000).fadeOut()
+            $('#spinner').show();
 
-            var token = function(res){
-                var $input = $('<input type=hidden name=stripeToken />').val(res.id);
-                $('form').append($input).submit();
+            var token = function(status, res){
+                if (!res.id) {
+                    if (!res.error)
+                        msg = "Please provide your credit card information";
+                    else
+                        msg = res.error.message;
+                    $("#cc-form p.alert").text(msg).slideDown();
+                } else {
+                    var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+                    $('#order-form').append($input).submit();
+                }
+                $("#spinner").fadeOut();
             };
 
             // http://stackoverflow.com/questions/16198480/using-stripe-payment-form-in-meteor
-            StripeCheckout.open({
-                key:         'pk_live_Jd7gUj9oEVcEAaNobds40dxq',
                 // key:         'pk_test_EhEkcAl2o9ccwevq8I1Mx4Ft',
-                // address:     true,
-                amount:      Math.round(getOrderTotal() * 100),
-                name:        'InstaBooze',
-                description: getStripeDescription(),
-                panelLabel:  'Pay',
-                image: "/marketplace.png",
-                token:       token
-            });
+            //Stripe.setPublishableKey('pk_test_EhEkcAl2o9ccwevq8I1Mx4Ft');
+            Stripe.setPublishableKey('pk_live_Jd7gUj9oEVcEAaNobds40dxq');
+            Stripe.createToken($("#order-form"), token);
             return false;
         },
     });
